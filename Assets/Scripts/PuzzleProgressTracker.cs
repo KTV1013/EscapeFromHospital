@@ -32,7 +32,7 @@ public class PuzzleProgressTracker : ScriptableSingleton<ProgressInfo>
     bool ExistInLists(int id)
     {
         bool exists = unnecessaryHints.Exists(listedId => listedId == id);
-        exists = exists && potentialHints.Exists(hintId => hintId == id);
+        exists = exists || potentialHints.Exists(hintId => hintId == id);
         return exists;
     }
     

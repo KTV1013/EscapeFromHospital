@@ -34,10 +34,10 @@ public class PuzzleProgressTracker : ScriptableSingleton<ProgressInfo>
             if(potentialHints.Exists(hintId => hintId == lockId))
                 potentialHints.Remove(lockId);
         }
-        foreach (int unlockId in step.unlockHints) 
+        foreach (int addId in step.addHints) 
         {
-            if(!ExistInLists(unlockId))
-                potentialHints.Add(unlockId);
+            if(!ExistInLists(addId))
+                potentialHints.Add(addId);
         }
     }
 

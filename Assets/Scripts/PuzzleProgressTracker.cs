@@ -13,29 +13,30 @@ public class PuzzleProgressTracker : ScriptableSingleton<ProgressInfo>
     #region Tracker
     public void CompleteStep(int id)
     {
-        foreach (ProgressInfo.Step step in FindSteps(id))
+        ProgressInfo.Step step = FindStep(id);
+        
+        foreach (int lockId in step.lockHints) 
         {
-            foreach (int hintId in step.lockHints) 
-            {
-                if(!unnecessaryHints.Exists(id => id == hintId))
-                    unnecessaryHints.Add(hintId);
-            }
-            foreach (int hintId in step.unlockHints) 
-            {
-                if(!potentialHints.Exists(id => id == hintId))
-                    potentialHints.Add(hintId);
-            }
+            if(!unnecessaryHints.Exists(hintId => hintId == lockId))
+                unnecessaryHints.Add(lockId);
+        }
+        foreach (int unlockId in step.unlockHints) 
+        {
+            if(!ExistInLists(unlockId))
+                potentialHints.Add(unlockId);
         }
     }
-    
-    List<ProgressInfo.Step> FindSteps(int id)
-    {
-        return puzzleInfo.steps.FindAll(step => step.id == id);
-    }
 
-    List<ProgressInfo.Hint> FindHints(int id)
+    bool ExistInLists(int id)
     {
-        return puzzleInfo.hints.FindAll(hint => hint.id == id);
+        bool exists = unnecessaryHints.Exists(listedId => listedId == id);
+        exists = exists && potentialHints.Exists(hintId => hintId == id);
+        return exists;
+    }
+    
+    ProgressInfo.Step FindStep(int id)
+    {
+        return puzzleInfo.steps.Find(step => step.id == id);
     }
     #endregion Tracker
     #region Hinter
@@ -45,6 +46,7 @@ public class PuzzleProgressTracker : ScriptableSingleton<ProgressInfo>
             return "Out of hints";
         if (potentialHints.Count == 1)
             return puzzleInfo.hints[0].hint;
+
         int randomHintIndex = Random.Range(0, potentialHints.Count);
         return puzzleInfo.hints[potentialHints[randomHintIndex]].hint;
     }

@@ -4,6 +4,14 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
+/// <summary>
+/// <para> 
+/// Keeps track of how much progress the player has made towards completing all puzzles 
+/// </para>
+/// <para> 
+/// It checks what hints become available as well as which become unnecessary
+/// </para>
+/// </summary>
 public class PuzzleProgressTracker : ScriptableSingleton<ProgressInfo>
 {
     [SerializeField]
@@ -11,6 +19,10 @@ public class PuzzleProgressTracker : ScriptableSingleton<ProgressInfo>
     List<int> unnecessaryHints = new();
     List<int> potentialHints = new();
     #region Tracker
+    private void Awake()
+    {
+        CompleteStep(0);
+    }
     public void CompleteStep(int id)
     {
         ProgressInfo.Step step = FindStep(id);
@@ -42,7 +54,7 @@ public class PuzzleProgressTracker : ScriptableSingleton<ProgressInfo>
     }
     #endregion Tracker
     #region Hinter
-    public string GetHint()
+    public string GetRandomHint()
     {
         if (potentialHints.Count == 0)
             return "Out of hints";
@@ -51,6 +63,16 @@ public class PuzzleProgressTracker : ScriptableSingleton<ProgressInfo>
 
         int randomHintIndex = Random.Range(0, potentialHints.Count);
         return puzzleInfo.hints[potentialHints[randomHintIndex]].hint;
+    }
+
+    public List<string> GetHints() 
+    {
+        List<string> hints = new();
+        foreach (int id in potentialHints) 
+        {
+            hints.Add(puzzleInfo.hints.Find(hintId => hintId.id == id).hint);
+        }
+        return hints;
     }
     #endregion Hinter
 }

@@ -19,6 +19,8 @@ public class PuzzleProgressTracker : ScriptableSingleton<ProgressInfo>
         {
             if(!unnecessaryHints.Exists(hintId => hintId == lockId))
                 unnecessaryHints.Add(lockId);
+            if(potentialHints.Exists(hintId => hintId == lockId))
+                potentialHints.Remove(lockId);
         }
         foreach (int unlockId in step.unlockHints) 
         {

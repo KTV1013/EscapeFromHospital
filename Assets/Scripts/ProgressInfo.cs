@@ -19,8 +19,8 @@ public class ProgressInfo : ScriptableObject
     {
         public string name;
         public int id;
-        public List<int> lockHints;
-        public List<int> addHints;
+        public List<Hint> lockHints;
+        public List<Hint> addHints;
     }
 
     [Header("Hints that are to be given to the player")]

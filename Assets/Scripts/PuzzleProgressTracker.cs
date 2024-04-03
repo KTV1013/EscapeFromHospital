@@ -12,32 +12,28 @@ using UnityEngine;
 /// It checks what hints become available as well as which become unnecessary
 /// </para>
 /// </summary>
-public class PuzzleProgressTracker : ScriptableSingleton<ProgressInfo>
+public class PuzzleProgressTracker : ScriptableSingleton<PuzzleProgressTracker>
 {
     [SerializeField]
     ProgressInfo puzzleInfo;
     List<int> unnecessaryHints = new();
     List<int> potentialHints = new();
     #region Tracker
-    private void Awake()
-    {
-        CompleteStep(0);
-    }
+
     public void CompleteStep(int id)
     {
         ProgressInfo.Step step = FindStep(id);
-        
-        foreach (int lockId in step.lockHints) 
+        foreach (ProgressInfo.Hint lockId in step.lockHints) 
         {
-            if(!unnecessaryHints.Exists(hintId => hintId == lockId))
-                unnecessaryHints.Add(lockId);
-            if(potentialHints.Exists(hintId => hintId == lockId))
-                potentialHints.Remove(lockId);
+            if(!unnecessaryHints.Exists(hintId => hintId == lockId.id))
+                unnecessaryHints.Add(lockId.id);
+            if(potentialHints.Exists(hintId => hintId == lockId.id))
+                potentialHints.Remove(lockId.id);
         }
-        foreach (int addId in step.addHints) 
+        foreach (ProgressInfo.Hint addId in step.addHints) 
         {
-            if(!ExistInLists(addId))
-                potentialHints.Add(addId);
+            if(!ExistInLists(addId.id))
+                potentialHints.Add(addId.id);
         }
     }
 
@@ -50,6 +46,8 @@ public class PuzzleProgressTracker : ScriptableSingleton<ProgressInfo>
     
     ProgressInfo.Step FindStep(int id)
     {
+        if (puzzleInfo == null) 
+            puzzleInfo = Resources.Load<ProgressInfo>("ScriptableObjects/PuzzleList");
         return puzzleInfo.steps.Find(step => step.id == id);
     }
     #endregion Tracker
@@ -58,6 +56,8 @@ public class PuzzleProgressTracker : ScriptableSingleton<ProgressInfo>
     {
         if (potentialHints.Count == 0)
             return "Out of hints";
+        if (puzzleInfo == null)
+            puzzleInfo = Resources.Load<ProgressInfo>("ScriptableObjects/PuzzleList");
         if (potentialHints.Count == 1)
             return puzzleInfo.hints[0].hint;
 
@@ -68,11 +68,19 @@ public class PuzzleProgressTracker : ScriptableSingleton<ProgressInfo>
     public List<string> GetHints() 
     {
         List<string> hints = new();
+        if (puzzleInfo == null)
+            puzzleInfo = Resources.Load<ProgressInfo>("ScriptableObjects/PuzzleList");
         foreach (int id in potentialHints) 
         {
             hints.Add(puzzleInfo.hints.Find(hintId => hintId.id == id).hint);
         }
         return hints;
+    }
+
+    public void ResetLists()
+    {
+        unnecessaryHints.Clear();
+        potentialHints.Clear();
     }
     #endregion Hinter
 }

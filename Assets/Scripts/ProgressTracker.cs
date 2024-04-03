@@ -18,6 +18,11 @@ public class ProgressTracker : ScriptableSingleton<ProgressTracker>
     List<int> unnecessaryHints = new();
     List<int> potentialHints = new();
     #region Tracker
+    public void ResetLists()
+    {
+        unnecessaryHints.Clear();
+        potentialHints.Clear();
+    }
 
     private void Awake()
     {
@@ -60,10 +65,19 @@ public class ProgressTracker : ScriptableSingleton<ProgressTracker>
         if (potentialHints.Count == 0)
             return "Out of hints";
         if (potentialHints.Count == 1)
-            return puzzleInfo.hints[0].hint;
+        {
+            return GetAndRemovePotentialHint(0);
+        }
 
         int randomHintIndex = Random.Range(0, potentialHints.Count);
-        return puzzleInfo.hints[potentialHints[randomHintIndex]].hint;
+        return GetAndRemovePotentialHint(randomHintIndex);
+    }
+    string GetAndRemovePotentialHint(int index)
+    {
+        int hintIndex = potentialHints[index];
+        unnecessaryHints.Add(hintIndex);
+        potentialHints.Remove(hintIndex);
+        return puzzleInfo.hints[hintIndex].hint;
     }
 
     public List<string> GetHints() 
@@ -74,12 +88,6 @@ public class ProgressTracker : ScriptableSingleton<ProgressTracker>
             hints.Add(puzzleInfo.hints.Find(hintId => hintId.id == id).hint);
         }
         return hints;
-    }
-
-    public void ResetLists()
-    {
-        unnecessaryHints.Clear();
-        potentialHints.Clear();
     }
     #endregion Hinter
 }

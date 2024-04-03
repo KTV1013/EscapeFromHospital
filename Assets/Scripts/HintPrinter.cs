@@ -23,7 +23,9 @@ public class HintPrinter : MonoBehaviour
         numberOfHints++;
         GameObject newHint = Instantiate(hint);
         newHint.transform.GetChild(0).GetChild(0).TryGetComponent(out TextMeshProUGUI textMPGUI);
-        textMPGUI.text = progressTracker.GetRandomHint();
+        if (progressTracker != null)
+            textMPGUI.text = progressTracker.GetRandomHint();
+        else textMPGUI.text = "Game is not in playmode\n or progress tracker is null";
         newHint.name = "Hint " + numberOfHints;
     }
 }

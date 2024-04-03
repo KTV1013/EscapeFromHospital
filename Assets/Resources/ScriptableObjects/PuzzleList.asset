@@ -13,35 +13,11 @@ MonoBehaviour:
   m_Name: PuzzleList
   m_EditorClassIdentifier: 
   hints:
-  - name: Example hint
+  - name: Start Hint
     id: 0
-    hint: 'Example Hint row 1
-
-      Example Hint row 2
-
-      Example Hint row 3'
+    hint: "This Is \nThe Hint Machine"
   steps:
-  - name: StartStep
+  - name: Start Step
     id: 0
-    lockHints: []
-    addHints:
-    - name: Example hint
-      id: 0
-      hint: 'Example Hint row 1
-
-        Example Hint row 2
-
-        Example Hint
-        row 3'
-  - name: Example Step
-    id: 1
-    lockHints:
-    - name: Example hint
-      id: 0
-      hint: 'Example Hint row 1
-
-        Example Hint row 2
-
-        Example Hint
-        row 3'
-    addHints: []
+    lockHints: 
+    addHints: 00000000

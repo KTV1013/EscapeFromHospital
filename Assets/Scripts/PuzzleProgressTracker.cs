@@ -23,17 +23,17 @@ public class PuzzleProgressTracker : ScriptableSingleton<PuzzleProgressTracker>
     public void CompleteStep(int id)
     {
         ProgressInfo.Step step = FindStep(id);
-        foreach (ProgressInfo.Hint lockId in step.lockHints) 
+        foreach (int lockId in step.lockHints) 
         {
-            if(!unnecessaryHints.Exists(hintId => hintId == lockId.id))
-                unnecessaryHints.Add(lockId.id);
-            if(potentialHints.Exists(hintId => hintId == lockId.id))
-                potentialHints.Remove(lockId.id);
+            if(!unnecessaryHints.Exists(hintId => hintId == lockId))
+                unnecessaryHints.Add(lockId);
+            if(potentialHints.Exists(hintId => hintId == lockId))
+                potentialHints.Remove(lockId);
         }
-        foreach (ProgressInfo.Hint addId in step.addHints) 
+        foreach (int addId in step.addHints) 
         {
-            if(!ExistInLists(addId.id))
-                potentialHints.Add(addId.id);
+            if(!ExistInLists(addId))
+                potentialHints.Add(addId);
         }
     }
 

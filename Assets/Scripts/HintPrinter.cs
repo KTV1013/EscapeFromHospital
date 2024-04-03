@@ -14,7 +14,7 @@ public class HintPrinter : MonoBehaviour
     {
         progressTracker = ProgressTracker.instance;
         progressTracker.ResetLists();
-        progressTracker.CompleteStep(0);
+        progressTracker.CompleteStep(0); //Start Step
     }
 
     [ContextMenu("Print it")]

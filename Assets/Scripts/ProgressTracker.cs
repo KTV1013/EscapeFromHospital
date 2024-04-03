@@ -12,18 +12,23 @@ using UnityEngine;
 /// It checks what hints become available as well as which become unnecessary
 /// </para>
 /// </summary>
-public class PuzzleProgressTracker : ScriptableSingleton<PuzzleProgressTracker>
+public class ProgressTracker : ScriptableSingleton<ProgressTracker>
 {
-    [SerializeField]
     ProgressInfo puzzleInfo;
     List<int> unnecessaryHints = new();
     List<int> potentialHints = new();
     #region Tracker
 
+    private void Awake()
+    {
+        puzzleInfo = Resources.Load<ProgressInfo>("ScriptableObjects/PuzzleList");
+        if (puzzleInfo == null) Debug.LogError("progressTracker is " + puzzleInfo, this);
+    }
+
     public void CompleteStep(int id)
     {
         ProgressInfo.Step step = FindStep(id);
-        foreach (int lockId in step.lockHints) 
+        foreach (int lockId in step.lockHints)
         {
             if(!unnecessaryHints.Exists(hintId => hintId == lockId))
                 unnecessaryHints.Add(lockId);
@@ -46,8 +51,6 @@ public class PuzzleProgressTracker : ScriptableSingleton<PuzzleProgressTracker>
     
     ProgressInfo.Step FindStep(int id)
     {
-        if (puzzleInfo == null) 
-            puzzleInfo = Resources.Load<ProgressInfo>("ScriptableObjects/PuzzleList");
         return puzzleInfo.steps.Find(step => step.id == id);
     }
     #endregion Tracker
@@ -56,8 +59,6 @@ public class PuzzleProgressTracker : ScriptableSingleton<PuzzleProgressTracker>
     {
         if (potentialHints.Count == 0)
             return "Out of hints";
-        if (puzzleInfo == null)
-            puzzleInfo = Resources.Load<ProgressInfo>("ScriptableObjects/PuzzleList");
         if (potentialHints.Count == 1)
             return puzzleInfo.hints[0].hint;
 
@@ -68,8 +69,6 @@ public class PuzzleProgressTracker : ScriptableSingleton<PuzzleProgressTracker>
     public List<string> GetHints() 
     {
         List<string> hints = new();
-        if (puzzleInfo == null)
-            puzzleInfo = Resources.Load<ProgressInfo>("ScriptableObjects/PuzzleList");
         foreach (int id in potentialHints) 
         {
             hints.Add(puzzleInfo.hints.Find(hintId => hintId.id == id).hint);

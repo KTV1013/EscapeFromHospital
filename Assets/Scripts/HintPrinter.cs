@@ -7,12 +7,12 @@ public class HintPrinter : MonoBehaviour
 {
     [SerializeField]
     GameObject hint;
-    PuzzleProgressTracker progressTracker;
+    ProgressTracker progressTracker;
 
     int numberOfHints = 0;
     private void Start()
     {
-        progressTracker = PuzzleProgressTracker.instance;
+        progressTracker = ProgressTracker.instance;
         progressTracker.ResetLists();
         progressTracker.CompleteStep(0);
     }

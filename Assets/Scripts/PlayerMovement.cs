@@ -1,31 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    Rigidbody rb;
     [SerializeField] float Playerspeed = 10f;
-    Vector2 _MoveDir;
-    public InputActionReference MoveAction;
+    [SerializeField] float Gravity = -9.81f;
+    CharacterController characterController;
 
+    // Start is called before the first frame update
     void Start()
     {
-        rb = gameObject.GetComponent<Rigidbody>();
+        characterController = gameObject.GetComponent<CharacterController>();
     }
 
+    // Update is called once per frame
     void Update()
     {
-        _MoveDir = MoveAction.action.ReadValue<Vector2>();
-       
-    }
+        float x = Input.GetAxis("Horizontal") * Playerspeed * Time.deltaTime;
+        float z = Input.GetAxis("Vertical") * Playerspeed * Time.deltaTime; 
+        Vector3 Movement = new Vector3(x, 0, z);
+        Movement = transform.TransformDirection(Movement); 
 
-    private void FixedUpdate()
-    {
-        Vector3 Movement = new Vector3(_MoveDir.x, 0, _MoveDir.y) * Playerspeed;
-        rb.AddForce(Movement * Time.deltaTime, ForceMode.VelocityChange);
+        float yVelocity = Gravity * Time.deltaTime;
+        Movement.y = yVelocity; 
+        characterController.Move(Movement);
     }
-
 }

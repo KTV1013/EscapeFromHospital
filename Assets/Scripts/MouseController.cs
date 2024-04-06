@@ -6,9 +6,7 @@ using UnityEngine.InputSystem;
 public class MouseController : MonoBehaviour
 {
     [SerializeField] float sens = 200f;
-    public InputActionReference mouse;
-    Transform PlayerTransform;
-    Vector2 _MouseDir;
+    Transform PlayerTransform; 
     float xRot = 0f; 
 
     void Start()
@@ -20,14 +18,13 @@ public class MouseController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _MouseDir = mouse.action.ReadValue<Vector2>();  
-        float mouseX = _MouseDir.x * sens * Time.deltaTime; 
-        float mouseY = _MouseDir.y * sens * Time.deltaTime;
-        xRot -= mouseY; 
+        float MouseX = Input.GetAxis("Mouse X") * sens * Time.deltaTime;
+        float MouseY = Input.GetAxis("Mouse Y") * sens * Time.deltaTime; 
+        xRot -= MouseY;
         xRot = Mathf.Clamp(xRot, -90f, 90f);
 
         gameObject.transform.localRotation = Quaternion.Euler(xRot, 0f, 0f);
-        PlayerTransform.transform.Rotate(Vector3.up * mouseX);
+        PlayerTransform.transform.Rotate(Vector3.up * MouseX);
     }
 
 }

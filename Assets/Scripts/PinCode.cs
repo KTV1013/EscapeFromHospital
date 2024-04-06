@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PinCode : MonoBehaviour
 {
-    public int pinCode;
+    public string pinCode = "1234";
+     
 
-    
 }

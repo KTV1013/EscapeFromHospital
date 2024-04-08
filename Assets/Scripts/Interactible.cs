@@ -27,7 +27,7 @@ public class Interactible : MonoBehaviour
     protected CameraController cameraController;
     protected Camera playerCamera;
     protected PlayerInput playerInput;
-    protected GameObject interactedObject;
+    protected Transform interactedObject;
     #endregion Variables
     #region Input Callbacks
     private void Awake()
@@ -94,8 +94,6 @@ public class Interactible : MonoBehaviour
     {
         playerInput.enabled = true;
         cameraController.SetParent(cameraTransform);
-        inputVector = Vector2.zero;
-        pivotPoint.localRotation = Quaternion.identity;
     }
 
     public virtual void EndInteraction()
@@ -141,7 +139,7 @@ public class Interactible : MonoBehaviour
         Ray mouseRay = playerCamera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(mouseRay, out RaycastHit hit))
         {
-            interactedObject = hit.transform.gameObject;
+            interactedObject = hit.transform;
             Debug.Log(hit.transform.name);
         }
         else { interactedObject = null; }

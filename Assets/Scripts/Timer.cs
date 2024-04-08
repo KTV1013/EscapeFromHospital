@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-    public float time;
-    public TextMeshProUGUI timerText;
+    [SerializeField] float time;    
+    [SerializeField] TextMeshProUGUI timerText;
 
     [ContextMenu("Start Timer")]
 

@@ -1,20 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Net.Security;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
-using UnityEngine.InputSystem.LowLevel;
 
 [RequireComponent(typeof(PlayerInput))]
-public class Interactible : MonoBehaviour
+public class InteractableObject : Interactable
 {
     #region Variables
     [SerializeField] protected Transform cameraTransform;
-    [SerializeField] Interactible parentInteractible;
-    [Header("Translate if true,\n Rotate if False")] [Space()] 
+    [SerializeField] InteractableObject parentInteractableObject;
+    [Header("Translate if true,\n Rotate if False")]
+    [Space()]
     [SerializeField] protected bool translate;
     [SerializeField] protected Transform pivotPoint;
     [SerializeField] protected Vector2 upperBounds;
@@ -26,17 +23,19 @@ public class Interactible : MonoBehaviour
     protected Vector2 currentVector = Vector2.zero;
     protected CameraController cameraController;
     protected Camera playerCamera;
-    protected PlayerInput playerInput;
+    
     protected Transform interactedObject;
+    protected PlayerInput playerInput;
+
     #endregion Variables
     #region Input Callbacks
-    private void Awake()
+    protected virtual void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
         playerInput.enabled = false;
-        
+
         InputAction moveAction = playerInput.actions.FindAction("Move");
-        
+
         moveAction.performed +=
             context =>
             {
@@ -75,7 +74,7 @@ public class Interactible : MonoBehaviour
     }
     #endregion Input Callbacks
     #region CameraMovement
-    private void Start()
+    protected virtual void Start()
     {
         playerCamera = Camera.main;
         cameraController = Camera.main.GetComponent<CameraController>();
@@ -88,20 +87,20 @@ public class Interactible : MonoBehaviour
         freeRotation = upperBounds.x - lowerBounds.x >= 360;
         freeRotation = freeRotation && !translate;
     }
-    
+
     [ContextMenu("StartInteraction")]
-    public virtual void StartInteraction() 
+    public override void StartInteraction()
     {
         playerInput.enabled = true;
         cameraController.SetParent(cameraTransform);
     }
 
-    public virtual void EndInteraction()
+    public override void EndInteraction()
     {
         playerInput.enabled = false;
-        if (parentInteractible != null) 
+        if (parentInteractableObject != null)
         {
-            parentInteractible.StartInteraction();
+            parentInteractableObject.StartInteraction();
         }
         else
         {
@@ -134,7 +133,7 @@ public class Interactible : MonoBehaviour
     }
     #endregion CameraMovement
     #region ClickAndDrag
-    protected virtual void OnLeftClick(InputAction.CallbackContext callback) 
+    protected virtual void OnLeftClick(InputAction.CallbackContext callback)
     {
         Ray mouseRay = playerCamera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(mouseRay, out RaycastHit hit))
@@ -144,7 +143,7 @@ public class Interactible : MonoBehaviour
         }
         else { interactedObject = null; }
     }
-    protected virtual void OnLeftHold(InputAction.CallbackContext callback) 
+    protected virtual void OnLeftHold(InputAction.CallbackContext callback)
     {
         Ray mouseRay = playerCamera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(mouseRay, out RaycastHit hit))
@@ -154,7 +153,7 @@ public class Interactible : MonoBehaviour
                 Debug.Log("Holding " + interactedObject.name);
         }
     }
-    protected virtual void OnLeftCancel(InputAction.CallbackContext callback) 
+    protected virtual void OnLeftCancel(InputAction.CallbackContext callback)
     {
         Debug.Log("cancel");
     }

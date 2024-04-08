@@ -7,6 +7,9 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     [Range(0f, 2f)]
     float Speed = 1.8f;
+
+    [SerializeField]
+    Transform PlayerCameraTransform;
     // Update is called once per frame
     void Update()
     {
@@ -26,6 +29,11 @@ public class CameraController : MonoBehaviour
 
     public void ResetParent()
     {
+        SetParent(PlayerCameraTransform);
+    }
 
+    public void SetParent(Transform parent)
+    {
+        transform.SetParent(parent, true);
     }
 }

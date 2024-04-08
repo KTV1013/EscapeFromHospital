@@ -9,18 +9,19 @@ public class Interactible : MonoBehaviour
     protected Transform cameraTransform;
     [SerializeField]
     Interactible parentInteractible;
-
-    protected Camera playerCamera;
+    protected CameraController cameraController;
     
     private void Start()
     {
-        playerCamera = Camera.main;
+        cameraController = Camera.main.GetComponent<CameraController>();
     }
+    
     [ContextMenu("StartInteraction")]
     public virtual void StartInteraction() 
     {
-        playerCamera.transform.SetParent(cameraTransform, true);
+        cameraController.SetParent(cameraTransform);
     }
+
     public virtual void EndInteraction()
     {
         if (parentInteractible != null) 
@@ -29,7 +30,7 @@ public class Interactible : MonoBehaviour
         }
         else
         {
-            //Todo give main camera back to player
+            cameraController.ResetParent();
         }
     }
 }

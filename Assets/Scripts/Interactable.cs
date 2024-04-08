@@ -10,9 +10,8 @@ using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.UIElements;
 
 
-public class Interactable : MonoBehaviour
+public abstract class Interactable : MonoBehaviour
 {
-    public virtual void StartInteraction() { }
-
-    public virtual void EndInteraction() { }
+    public abstract void StartInteraction();
+    public abstract void EndInteraction();
 }

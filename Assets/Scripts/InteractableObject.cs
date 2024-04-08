@@ -24,7 +24,7 @@ public class InteractableObject : Interactable
     protected CameraController cameraController;
     protected Camera playerCamera;
     
-    protected Transform interactedObject;
+    protected Interactable interactedObject;
     protected PlayerInput playerInput;
 
     #endregion Variables
@@ -138,8 +138,10 @@ public class InteractableObject : Interactable
         Ray mouseRay = playerCamera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(mouseRay, out RaycastHit hit))
         {
-            interactedObject = hit.transform;
-            Debug.Log(hit.transform.name);
+            if (hit.transform.TryGetComponent(out interactedObject))
+            {
+                interactedObject.StartInteraction();
+            }
         }
         else { interactedObject = null; }
     }
@@ -150,12 +152,16 @@ public class InteractableObject : Interactable
         {
             int objectId = hit.transform.gameObject.GetInstanceID();
             if (interactedObject?.GetInstanceID() == objectId)
+            {
                 Debug.Log("Holding " + interactedObject.name);
+
+            }
         }
     }
     protected virtual void OnLeftCancel(InputAction.CallbackContext callback)
     {
-        Debug.Log("cancel");
+        interactedObject?.EndInteraction();
+        interactedObject = null;
     }
     #endregion ClickAndDrag
 }

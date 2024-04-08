@@ -5,34 +5,76 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
 using UnityEngine.InputSystem.LowLevel;
 
 [RequireComponent(typeof(PlayerInput))]
 public class Interactible : MonoBehaviour
 {
-    [SerializeField]
-    protected Transform cameraTransform;
-    [SerializeField]
-    Interactible parentInteractible;
-    [SerializeField]
-    [Header("Translate if true,\n Rotate if False")]
-    [Space()]
-    protected bool translate;
-    [SerializeField]
-    protected Transform pivotPoint;
-    [SerializeField]
-    protected Vector2 upperBounds;
-    [SerializeField]
-    protected Vector2 lowerBounds;
-    [SerializeField]
-    protected float speed;
+    #region Variables
+    [SerializeField] protected Transform cameraTransform;
+    [SerializeField] Interactible parentInteractible;
+    [Header("Translate if true,\n Rotate if False")] [Space()] 
+    [SerializeField] protected bool translate;
+    [SerializeField] protected Transform pivotPoint;
+    [SerializeField] protected Vector2 upperBounds;
+    [SerializeField] protected Vector2 lowerBounds;
+    [SerializeField] protected float speed;
 
+    protected bool freeRotation;
     protected Vector2 inputVector = Vector2.zero;
     protected Vector2 currentVector = Vector2.zero;
     protected CameraController cameraController;
     protected Camera playerCamera;
     protected PlayerInput playerInput;
+    protected GameObject interactedObject;
+    #endregion Variables
+    #region Input Callbacks
+    private void Awake()
+    {
+        playerInput = GetComponent<PlayerInput>();
+        playerInput.enabled = false;
+        
+        InputAction moveAction = playerInput.actions.FindAction("Move");
+        
+        moveAction.performed +=
+            context =>
+            {
+                OnMove(context);
+            };
 
+        moveAction.canceled +=
+            context =>
+            {
+                OnMove(context);
+            };
+
+        InputAction leftClickAction = playerInput.actions.FindAction("LeftClick");
+
+        leftClickAction.started +=
+            context =>
+            {
+                OnLeftClick(context);
+            };
+
+        leftClickAction.performed +=
+            context =>
+            {
+                if (context.interaction is HoldInteraction)
+                    OnLeftHold(context);
+            };
+
+        leftClickAction.canceled +=
+            context =>
+            {
+                if (context.interaction is HoldInteraction)
+                    OnLeftCancel(context);
+            };
+
+        InputAction rightClickAction = playerInput.actions.FindAction("RightClick");
+    }
+    #endregion Input Callbacks
+    #region CameraMovement
     private void Start()
     {
         playerCamera = Camera.main;
@@ -43,9 +85,8 @@ public class Interactible : MonoBehaviour
             pivotPoint.SetParent(transform, false);
         }
         cameraTransform.SetParent(pivotPoint, true);
-        playerInput = GetComponent<PlayerInput>();
-        playerInput.enabled = false;
-        
+        freeRotation = upperBounds.x - lowerBounds.x >= 360;
+        freeRotation = freeRotation && !translate;
     }
     
     [ContextMenu("StartInteraction")]
@@ -70,16 +111,18 @@ public class Interactible : MonoBehaviour
         }
     }
 
-    protected virtual void OnMove(InputValue moveValue)
+    protected virtual void OnMove(InputAction.CallbackContext context)
     {
-        inputVector = moveValue.Get<Vector2>();
+        inputVector = context.ReadValue<Vector2>();
     }
 
     protected void Update()
     {
         Vector2 newVector = currentVector + Time.deltaTime * speed * inputVector;
-        currentVector.x = Mathf.Clamp(newVector.x, lowerBounds.x, upperBounds.x);
-        currentVector.y = Mathf.Clamp(newVector.y, lowerBounds.y, upperBounds.y);
+        if (!freeRotation)
+            newVector.x = Mathf.Clamp(newVector.x, lowerBounds.x, upperBounds.x);
+        newVector.y = Mathf.Clamp(newVector.y, lowerBounds.y, upperBounds.y);
+        currentVector = newVector;
         if (translate)
         {
             Vector3 position = new(currentVector.x, currentVector.y, 0);
@@ -91,4 +134,31 @@ public class Interactible : MonoBehaviour
             pivotPoint.SetLocalPositionAndRotation(pivotPoint.localPosition, rotation);
         }
     }
+    #endregion CameraMovement
+    #region ClickAndDrag
+    protected virtual void OnLeftClick(InputAction.CallbackContext callback) 
+    {
+        Ray mouseRay = playerCamera.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(mouseRay, out RaycastHit hit))
+        {
+            interactedObject = hit.transform.gameObject;
+            Debug.Log(hit.transform.name);
+        }
+        else { interactedObject = null; }
+    }
+    protected virtual void OnLeftHold(InputAction.CallbackContext callback) 
+    {
+        Ray mouseRay = playerCamera.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(mouseRay, out RaycastHit hit))
+        {
+            int objectId = hit.transform.gameObject.GetInstanceID();
+            if (interactedObject?.GetInstanceID() == objectId)
+                Debug.Log("Holding " + interactedObject.name);
+        }
+    }
+    protected virtual void OnLeftCancel(InputAction.CallbackContext callback) 
+    {
+        Debug.Log("cancel");
+    }
+    #endregion ClickAndDrag
 }

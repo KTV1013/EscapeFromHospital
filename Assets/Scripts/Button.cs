@@ -8,7 +8,7 @@ public class Button : MonoBehaviour
 
     [ContextMenu("Press")]
 
-    public string Press()
+    public string GetNum()
     {
         Debug.Log(num.ToString());
         return num.ToString();

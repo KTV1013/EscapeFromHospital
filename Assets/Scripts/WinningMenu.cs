@@ -5,6 +5,7 @@ using UnityEngine;
 public class WinningMenu : MonoBehaviour
 {
     public Canvas winningCanvas;
+    PinCode pinCode; 
 
     private void Awake()
     {
@@ -13,7 +14,12 @@ public class WinningMenu : MonoBehaviour
 
     private void Update()
     {
-        
+        pinCode = GetComponent<PinCode>();
+        if (pinCode.GetNewPinCode() == pinCode.GetPinCode())
+        {
+            winningCanvas.enabled = true;
+        }
+       
     }
 
 

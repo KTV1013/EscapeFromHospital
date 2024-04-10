@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractibleSequence : Interactable
+public class InteractableSequence : Interactable
 {
     [SerializeField]
-    protected InteractibleSequence parent;
+    protected InteractableSequence parent;
     [SerializeField]
     bool orderedSequence;
     [SerializeField]
     protected List<Sequence> sequences;
     public class Sequence 
     {
-        public InteractibleSequence sequence;
+        public InteractableSequence sequence;
         public bool completedSequence;
     }
 

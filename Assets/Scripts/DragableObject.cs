@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class DragableObject : Interactable
 {
-    [SerializeField] protected float forceModifier = 1;
+    [SerializeField] protected float drag = 5f;
     Camera mainCamera;
     Rigidbody body;
     bool dragged = false;
@@ -30,6 +30,7 @@ public class DragableObject : Interactable
         Vector3 screenDirection = Input.mousePosition - screenPoint;
         Vector3 worldDirection = screenDirection.x * mainCamera.transform.right;
         worldDirection += screenDirection.y * mainCamera.transform.up;
-        body.AddForce(worldDirection * forceModifier);
+        body.AddForce(worldDirection);
+        body.AddForce(-drag * body.velocity);
     }
 }

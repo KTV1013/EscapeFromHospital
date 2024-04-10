@@ -30,7 +30,7 @@ public class DragableObject : Interactable
         Vector3 screenDirection = Input.mousePosition - screenPoint;
         Vector3 worldDirection = screenDirection.x * mainCamera.transform.right;
         worldDirection += screenDirection.y * mainCamera.transform.up;
-        body.AddForce(worldDirection);
+        body.AddForce(worldDirection * 2);
         body.AddForce(-drag * body.velocity);
     }
 }

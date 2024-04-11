@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
@@ -26,6 +27,7 @@ public class InteractableObject : Interactable
     
     protected Interactable interactedObject;
     protected PlayerInput playerInput;
+    protected Interactor interactor;
 
     #endregion Variables
     #region Input Callbacks
@@ -33,7 +35,7 @@ public class InteractableObject : Interactable
     {
         playerInput = GetComponent<PlayerInput>();
         playerInput.enabled = false;
-
+        
         InputAction moveAction = playerInput.actions.FindAction("Move");
 
         moveAction.performed +=
@@ -71,6 +73,24 @@ public class InteractableObject : Interactable
             };
 
         InputAction rightClickAction = playerInput.actions.FindAction("RightClick");
+
+        rightClickAction.started +=
+            context =>
+            {
+                playerInput.enabled = false;
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+                if (parentInteractableObject != null)
+                {
+                    parentInteractableObject.StartInteraction();
+                }
+                else
+                {
+                    cameraController.ResetParent();
+                    interactor.SetInput(true);
+                }
+            };
+
     }
     #endregion Input Callbacks
     #region CameraMovement
@@ -78,6 +98,7 @@ public class InteractableObject : Interactable
     {
         playerCamera = Camera.main;
         cameraController = Camera.main.GetComponent<CameraController>();
+        interactor = cameraController.transform.parent.parent.GetComponent<Interactor>();
         if (pivotPoint == null)
         {
             pivotPoint = new GameObject(name + " Rotation Point").GetComponent<Transform>();
@@ -91,21 +112,16 @@ public class InteractableObject : Interactable
     [ContextMenu("StartInteraction")]
     public override void StartInteraction()
     {
-        playerInput.enabled = true;
         cameraController.SetParent(cameraTransform);
+        interactor.SetInput(false);
+        playerInput.enabled = true;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     public override void EndInteraction()
     {
-        playerInput.enabled = false;
-        if (parentInteractableObject != null)
-        {
-            parentInteractableObject.StartInteraction();
-        }
-        else
-        {
-            cameraController.ResetParent();
-        }
+        
     }
 
     protected virtual void OnMove(InputAction.CallbackContext context)

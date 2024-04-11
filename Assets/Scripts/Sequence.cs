@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Sequence : MonoBehaviour
 {
@@ -9,7 +10,11 @@ public class Sequence : MonoBehaviour
     bool orderedSequence;
     [SerializeField]
     protected List<StepInfo> stepInfos;
-    
+    [SerializeField]
+    protected int progressStepId;
+    [SerializeField]
+    protected UnityEvent onCompletion;
+
     protected Sequence parent;
     [Serializable]
     public class StepInfo 
@@ -91,7 +96,9 @@ public class Sequence : MonoBehaviour
 
     protected virtual void End() 
     {
-        Debug.Log("Done: " + name);
+        ProgressTracker.instance.CompleteStep(progressStepId);
+        onCompletion.Invoke();
+        enabled = false;
     }
 
     public bool SequencesComplete()

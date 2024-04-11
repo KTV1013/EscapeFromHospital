@@ -21,7 +21,7 @@ public class HintPrinter : MonoBehaviour
     public void Print()
     {
         numberOfHints++;
-        GameObject newHint = Instantiate(hint);
+        GameObject newHint = Instantiate(hint, transform);
         newHint.transform.GetChild(0).GetChild(0).TryGetComponent(out TextMeshProUGUI textMPGUI);
         if (progressTracker != null)
             textMPGUI.text = progressTracker.GetRandomHint();

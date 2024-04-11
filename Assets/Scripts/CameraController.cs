@@ -10,6 +10,11 @@ public class CameraController : MonoBehaviour
 
     [SerializeField]
     Transform PlayerCameraTransform;
+    Interactor interactor;
+    private void Start()
+    {
+        interactor = PlayerCameraTransform.parent.GetComponent<Interactor>();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -30,6 +35,7 @@ public class CameraController : MonoBehaviour
     public void ResetParent()
     {
         SetParent(PlayerCameraTransform);
+        interactor.SetInput(true);
     }
 
     public void SetParent(Transform parent)

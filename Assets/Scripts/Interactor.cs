@@ -19,6 +19,7 @@ public class Interactor : MonoBehaviour
         playerCamera = Camera.main;
         playerMovement = GetComponent<PlayerMovement>();
         mouseController = playerCamera.GetComponentInParent<MouseController>();
+        playerInput.enabled = true;
     }
     #region Input
     void Awake()

@@ -96,7 +96,7 @@ public class Sequence : MonoBehaviour
 
     protected virtual void End() 
     {
-        ProgressTracker.instance.CompleteStep(progressStepId);
+        ProgressTracker.Instance.CompleteStep(progressStepId);
         onCompletion.Invoke();
         enabled = false;
     }

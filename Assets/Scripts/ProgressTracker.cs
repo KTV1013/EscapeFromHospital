@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
-
 /// <summary>
 /// <para> 
 /// Keeps track of how much progress the player has made towards completing all puzzles 
@@ -12,8 +11,19 @@ using UnityEngine;
 /// It checks what hints become available as well as which become unnecessary
 /// </para>
 /// </summary>
-public class ProgressTracker : ScriptableSingleton<ProgressTracker>
+public class ProgressTracker : MonoBehaviour
 {
+    static ProgressTracker instance;
+    public static ProgressTracker Instance
+    { 
+        get 
+        {
+            if (instance != null)
+                return instance;
+            instance = new GameObject("ProgressTracker").AddComponent<ProgressTracker>();
+            return Instance;
+        } 
+    }
     ProgressInfo puzzleInfo;
     List<int> unnecessaryHints = new();
     List<int> potentialHints = new();

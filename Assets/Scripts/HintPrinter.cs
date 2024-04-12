@@ -12,7 +12,7 @@ public class HintPrinter : MonoBehaviour
     int numberOfHints = 0;
     private void Start()
     {
-        progressTracker = ProgressTracker.Instance;
+        progressTracker = ProgressTracker.instance;
         progressTracker.ResetLists();
         progressTracker.CompleteStep(0); //Start Step
     }

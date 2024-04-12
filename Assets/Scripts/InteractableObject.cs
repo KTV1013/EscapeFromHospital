@@ -23,7 +23,6 @@ public class InteractableObject : Interactable
     protected Vector2 inputVector = Vector2.zero;
     protected Vector2 currentVector = Vector2.zero;
     protected CameraController cameraController;
-    protected Camera playerCamera;
     
     protected Interactable interactedObject;
     protected PlayerInput playerInput;
@@ -77,18 +76,7 @@ public class InteractableObject : Interactable
         rightClickAction.started +=
             context =>
             {
-                playerInput.enabled = false;
-                Cursor.visible = false;
-                Cursor.lockState = CursorLockMode.Locked;
-                if (parentInteractableObject != null)
-                {
-                    parentInteractableObject.StartInteraction();
-                }
-                else
-                {
-                    cameraController.ResetParent();
-                    interactor.SetInput(true);
-                }
+                OnRightClick(context);
             };
 
     }
@@ -96,7 +84,6 @@ public class InteractableObject : Interactable
     #region CameraMovement
     protected virtual void Start()
     {
-        playerCamera = Camera.main;
         cameraController = Camera.main.GetComponent<CameraController>();
         interactor = cameraController.transform.parent.parent.GetComponent<Interactor>();
         if (pivotPoint == null)
@@ -118,7 +105,22 @@ public class InteractableObject : Interactable
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
     }
-
+    protected void OnRightClick(InputAction.CallbackContext context)
+    {
+        if (playerInput == null) return; //Temporary until inputmanager is made
+        playerInput.enabled = false;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        if (parentInteractableObject != null)
+        {
+            parentInteractableObject.StartInteraction();
+        }
+        else
+        {
+            cameraController.ResetParent();
+            interactor.SetInput(true);
+        }
+    }
     public override void EndInteraction()
     {
         
@@ -151,7 +153,7 @@ public class InteractableObject : Interactable
     #region ClickAndDrag
     protected virtual void OnLeftClick(InputAction.CallbackContext callback)
     {
-        Ray mouseRay = playerCamera.ScreenPointToRay(Input.mousePosition);
+        Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(mouseRay, out RaycastHit hit))
         {
             if (hit.transform.TryGetComponent(out interactedObject))
@@ -163,7 +165,7 @@ public class InteractableObject : Interactable
     }
     protected virtual void OnLeftHold(InputAction.CallbackContext callback)
     {
-        Ray mouseRay = playerCamera.ScreenPointToRay(Input.mousePosition);
+        Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(mouseRay, out RaycastHit hit))
         {
             int objectId = hit.transform.gameObject.GetInstanceID();

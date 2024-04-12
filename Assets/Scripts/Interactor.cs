@@ -11,14 +11,12 @@ public class Interactor : MonoBehaviour
 {
     PlayerInput playerInput;
     Interactable interactedObject;
-    Camera playerCamera;
     PlayerMovement playerMovement;
     MouseController mouseController;
     private void Start()
     {
-        playerCamera = Camera.main;
         playerMovement = GetComponent<PlayerMovement>();
-        mouseController = playerCamera.GetComponentInParent<MouseController>();
+        mouseController = Camera.main.GetComponentInParent<MouseController>();
         playerInput.enabled = true;
     }
     #region Input
@@ -65,8 +63,8 @@ public class Interactor : MonoBehaviour
 
     private void OnLeftClick(InputAction.CallbackContext context)
     {
-        Vector3 position = playerCamera.transform.position;
-        Vector3 forward = playerCamera.transform.forward;
+        Vector3 position = Camera.main.transform.position;
+        Vector3 forward = Camera.main.transform.forward;
         Ray mouseRay = new(position, forward);
 
         if (Physics.Raycast(mouseRay, out RaycastHit hit))

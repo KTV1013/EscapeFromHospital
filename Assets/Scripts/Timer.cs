@@ -10,6 +10,14 @@ public class Timer : MonoBehaviour
 
     [ContextMenu("Start Timer")]
 
+
+    private void Update()
+    {
+        startTimer();
+        HalvTimeCheck();
+    }
+
+    public float GetTime() {  return time; }
     public void startTimer()
     {
         if (time > 0)
@@ -24,10 +32,16 @@ public class Timer : MonoBehaviour
         int seconds = Mathf.FloorToInt(time % 60);
         //timerText.text = string.Format("{0:00}:{1:00}",minutes,seconds);
     }
-    private void Update()
+
+    private void HalvTimeCheck()
     {
-        startTimer();
+        if (time <= time/2)
+        {
+         //timerText.color = Color.red;       
+        }
     }
-    public float GetTime() {  return time; }
+
+    
+    
 
 }

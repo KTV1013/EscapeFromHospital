@@ -27,15 +27,20 @@ public class PauseMenu : MonoBehaviour
     private void pauseTheGame()
     {
         GameIsPaused = !GameIsPaused;
+        
         if (GameIsPaused)
         {
             pauseCanvas.enabled = true;
             Time.timeScale = 0f;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
         }
         else if (!GameIsPaused)
         {
             pauseCanvas.enabled = false;
             Time.timeScale = 1f;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
     }
@@ -47,6 +52,9 @@ public class PauseMenu : MonoBehaviour
 
     public void OpenScene(int sceneIndex)
     {
+        Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
         SceneManager.LoadScene(sceneIndex);
     }
 }

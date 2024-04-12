@@ -5,7 +5,6 @@ using UnityEngine;
 public class Button : MonoBehaviour
 {
     public int num;
-    Ray ray;
 
     [ContextMenu("Press")]
 

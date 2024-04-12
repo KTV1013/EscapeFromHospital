@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 462727a42613deb4cb519447e162dbd4
+  - enabled: 1
+    path: Assets/Scenes/Karims Scene.unity
+    guid: 5eb2d5203673bc8488e46beb499892ab
   m_configObjects: {}

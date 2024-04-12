@@ -43,5 +43,4 @@ public class PinCode : MonoBehaviour
         return newPinCode;
     }
 
-
 }

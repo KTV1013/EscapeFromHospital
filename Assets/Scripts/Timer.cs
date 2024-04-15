@@ -5,39 +5,60 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-    [SerializeField] float time;    
+    [SerializeField] float time;
+    [SerializeField] float timeLeft;
+
+    [SerializeField] int minutes;
+    [SerializeField] int seconds;
     //[SerializeField] TextMeshProUGUI timerText;
 
     [ContextMenu("Start Timer")]
+    //[SerializeField] TextMeshProUGUI timerText;
 
-
+    private void Awake()
+    {
+        timeLeft = time;
+    }
     private void Update()
     {
+        minutes = Mathf.FloorToInt(timeLeft / 60);
+        seconds = Mathf.FloorToInt(timeLeft % 60);
+
         startTimer();
         HalvTimeCheck();
+        LastMinuteCheck(minutes,seconds);
     }
 
-    public float GetTime() {  return time; }
+    public float GetTime() {  return timeLeft; }
     public void startTimer()
     {
-        if (time > 0)
+        if (timeLeft > 0)
         {
-            time -= Time.deltaTime;
+            timeLeft -= Time.deltaTime;
         }
-        else if (time < 0)
+        else if (timeLeft < 0)
         {
-            time = 0;
+            timeLeft = 0;
         }
-        int minutes = Mathf.FloorToInt(time / 60);
-        int seconds = Mathf.FloorToInt(time % 60);
+
         //timerText.text = string.Format("{0:00}:{1:00}",minutes,seconds);
     }
 
     private void HalvTimeCheck()
     {
-        if (time <= time/2)
+        
+        if (timeLeft <= time/2)
         {
-         //timerText.color = Color.red;       
+            //timerText.color = Color.red;
+            Debug.Log("Halv time is gone");
+        }
+    }
+    private void LastMinuteCheck(int min, int sec)
+    {
+      
+        if (min == 1 & sec == 0)
+        {
+            Debug.Log("One Minute Left");
         }
     }
 

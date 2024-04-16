@@ -11,19 +11,8 @@ using UnityEngine;
 /// It checks what hints become available as well as which become unnecessary
 /// </para>
 /// </summary>
-public class ProgressTracker : MonoBehaviour
+public class ProgressTracker : Singleton<ProgressTracker>
 {
-    static ProgressTracker instance;
-    public static ProgressTracker Instance
-    { 
-        get 
-        {
-            if (instance != null)
-                return instance;
-            instance = new GameObject("ProgressTracker").AddComponent<ProgressTracker>();
-            return Instance;
-        } 
-    }
     ProgressInfo puzzleInfo;
     List<int> unnecessaryHints = new();
     List<int> potentialHints = new();
@@ -36,6 +25,7 @@ public class ProgressTracker : MonoBehaviour
 
     private void Awake()
     {
+        name = "ProgressTracker";
         puzzleInfo = Resources.Load<ProgressInfo>("ScriptableObjects/PuzzleList");
         if (puzzleInfo == null) Debug.LogError("progressTracker is " + puzzleInfo, this);
     }

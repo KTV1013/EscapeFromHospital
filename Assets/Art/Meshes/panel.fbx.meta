@@ -3,7 +3,12 @@ guid: 0aaea317129af3d4cbcba9371459a0cf
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Panel
+    second: {fileID: 2100000, guid: 7ed3b6da769408b4fbd3f275cbf3d226, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -6,10 +6,13 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputManager : Singleton<PlayerInputManager>
 {
-    [SerializeField]
     Interactor interactor;
     PlayerInput currentInput;
 
+    private void Start()
+    {
+        interactor = GetComponent<Interactor>();
+    }
     public void SetInput(PlayerInput input)
     {
         if (currentInput == null) 

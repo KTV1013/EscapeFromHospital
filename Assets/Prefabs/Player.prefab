@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 5308987483844802528}
   mouseController: {fileID: 5764971704496133717}
-  playerInput: {fileID: 0}
+  playerInput: {fileID: 8607406823370898616}
 --- !u!114 &8607406823370898616
 MonoBehaviour:
   m_ObjectHideFlags: 0

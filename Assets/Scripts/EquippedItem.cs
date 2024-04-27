@@ -11,6 +11,10 @@ public class EquippedItem : MonoBehaviour
 
     private void Update()
     {
+        if (equipmentSlot == null)
+        {
+            Debug.Log("null");
+        }
         if (equipmentSlot.CheckItem())
         {
             itemInSlot = equipmentSlot.GetComponentInChildren<ItemInSlot>();

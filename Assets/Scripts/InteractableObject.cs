@@ -100,25 +100,22 @@ public class InteractableObject : Interactable
     public override void StartInteraction()
     {
         cameraController.SetParent(cameraTransform);
-        interactor.SetInput(false);
-        playerInput.enabled = true;
+        PlayerInputManager.instance.SetInput(playerInput);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
     }
     protected void OnRightClick(InputAction.CallbackContext context)
     {
-        if (playerInput == null) return; //Temporary until inputmanager is made
-        playerInput.enabled = false;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
         if (parentInteractableObject != null)
         {
             parentInteractableObject.StartInteraction();
         }
         else
         {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
             cameraController.ResetParent();
-            interactor.SetInput(true);
+            PlayerInputManager.instance.ResetInput();
         }
     }
     public override void EndInteraction()

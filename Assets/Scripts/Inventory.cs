@@ -27,6 +27,20 @@ public class Inventory : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Tab))
             toggleInventory(!inventory.activeInHierarchy);
+
+        foreach (InventorySlot slot in inventorySlots)
+        {
+            for (int i = 0; i < slot.transform.childCount; i++)
+            {
+                Transform child = slot.transform.GetChild(i);
+                string childName = child.name;
+                Debug.Log("Child name: " + childName);
+                if (childName == "Battery")
+                {
+                    Debug.Log("You WIN");
+                }
+            }
+        }
     }
 
     private void itemRaycast(bool hasClicked = false)

@@ -6,24 +6,16 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputManager : Singleton<PlayerInputManager>
 {
-    [SerializeField] PlayerMovement movement;
-    [SerializeField] MouseController mouseController;
-    [SerializeField] PlayerInput playerInput;
-    
+    [SerializeField]
+    Interactor interactor;
     PlayerInput currentInput;
 
     public void SetInput(PlayerInput input)
     {
         if (currentInput == null) 
         {
-            movement.enabled = false;
-            mouseController.enabled = false;
+            interactor.SetInput(false);
         }
-        ChangeCurrentInput(input);
-    }
-
-    void ChangeCurrentInput(PlayerInput input)
-    {
         if (currentInput != null)
             currentInput.enabled = false;
         if (input != null)
@@ -35,10 +27,9 @@ public class PlayerInputManager : Singleton<PlayerInputManager>
 
     public void ResetInput()
     {
-        mouseController.enabled = true;
-        movement.enabled = true;
+        
         currentInput.enabled = false;
         currentInput = null;
-        playerInput.enabled = true;
+        interactor.SetInput(true);
     }
 }

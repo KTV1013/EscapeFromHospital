@@ -101,9 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 895c15c88074c4c4bb990273547cbd21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement: {fileID: 5308987483844802528}
-  mouseController: {fileID: 5764971704496133717}
-  playerInput: {fileID: 0}
+  interactor: {fileID: 7311158403309053933}
 --- !u!114 &8607406823370898616
 MonoBehaviour:
   m_ObjectHideFlags: 0

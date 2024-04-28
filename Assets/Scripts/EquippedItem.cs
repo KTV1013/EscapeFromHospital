@@ -40,4 +40,16 @@ public class EquippedItem : MonoBehaviour
             item.transform.SetParent(itemPlaceInHand.transform.parent.transform);
         }
     }
+    public string GetItem()
+    {
+        if (item == null)
+        {
+            return "null";
+        }
+        else
+        {
+            return item.name;
+
+        }
+    }
 }

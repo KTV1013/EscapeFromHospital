@@ -6,6 +6,7 @@ public class FlashlightPuzzle : MonoBehaviour
 {
     //Inventory inventory;
     List<InventorySlot> slots;
+    [SerializeField] List<string> batteris = new List<string>();
     EquippedItem equippedItem;
     GameObject player;
 
@@ -40,11 +41,11 @@ public class FlashlightPuzzle : MonoBehaviour
             for (int i = 0; i < slot.transform.childCount; i++)
             {
                 Transform child = slot.transform.GetChild(i);
-                string childName = child.name;
-                Debug.Log("Child name: " + childName);
+                string childName = child.name;               
                 if (childName == "Battery")
                 {
-                    hasBattery = true;
+                    batteris.Add(childName);
+                    //hasBattery = true;
                 }
             }
         }

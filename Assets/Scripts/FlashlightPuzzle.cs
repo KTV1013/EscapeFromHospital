@@ -41,13 +41,14 @@ public class FlashlightPuzzle : MonoBehaviour
             for (int i = 0; i < slot.transform.childCount; i++)
             {
                 Transform child = slot.transform.GetChild(i);
-                string childName = child.name;               
+                string childName = child.name;
                 if (childName == "Battery")
                 {
                     batteris.Add(childName);
-                    //hasBattery = true;
+                    hasBattery = true;
                 }
             }
+
         }
     }
 

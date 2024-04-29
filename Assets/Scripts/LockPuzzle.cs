@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
@@ -7,9 +8,12 @@ using UnityEngine;
 public class LockPuzzle : MonoBehaviour
 {
     Ray ray;
-    [SerializeField] string code = "ALVF";
-    string newCode;
-    float gear1Rot, gear2Rot, gear3Rot, gear4Rot;
+    public GameObject gear1, gear2, gear3, gear4;
+    [SerializeField] float gear1Rot , gear2Rot, gear3Rot, gear4Rot;
+    [SerializeField] bool puzzleSolved = false;
+    private float difference = 0.1f;
+    
+
     void Start()
     {
         
@@ -20,9 +24,9 @@ public class LockPuzzle : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-            shootRay();
-          
+            shootRay();          
         }
+        //CodeCheck();
     }
 
     void shootRay()
@@ -31,16 +35,28 @@ public class LockPuzzle : MonoBehaviour
         {
             if (hitInfo.collider.CompareTag("Gear"))
             {
-                hitInfo.collider.gameObject.transform.Rotate(new Vector3(36f, 0f, 0f));
-                if (hitInfo.collider.gameObject.name == "gear1"  )
-                {
-                    gear1Rot = hitInfo.collider.gameObject.transform.rotation.x;
-                   Debug.Log(gear1Rot);
-                }
-                
+                hitInfo.collider.gameObject.transform.Rotate(new Vector3(36f,0f,0f));
+
             }
-            Debug.Log("Ray hit: " + hitInfo.collider.gameObject.tag);
         }
     }
-    
+
+    //void CodeCheck()
+    //{
+
+    //    if (gear1.transform.rotation.x == gear1Rot)
+    //    {
+    //        if (gear2.transform.rotation.x == gear2Rot)
+    //        {
+    //            if ((gear3.transform.rotation.x == gear3Rot))
+    //            {
+    //                if (gear4.transform.rotation.x == gear4Rot)
+    //                {
+    //                    puzzleSolved = true;
+    //                }
+    //            }
+    //        }
+    //    }
+    //}
+
 }

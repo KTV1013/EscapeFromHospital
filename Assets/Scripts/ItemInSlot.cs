@@ -25,6 +25,7 @@ public class ItemInSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
+
         if (desplayItem != null && item != null)
         {
             if (desplayItem.itemOnView != null && desplayItem.itemNmae != name)

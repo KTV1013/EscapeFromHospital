@@ -8,6 +8,7 @@ TagManager:
   - ItemIcon
   - Flashlight
   - Battery
+  - Gear
   layers:
   - Default
   - TransparentFX

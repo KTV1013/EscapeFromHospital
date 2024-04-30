@@ -8,8 +8,9 @@ using UnityEngine;
 public class LockPuzzle : MonoBehaviour
 {
     Ray ray;
-    public GameObject gear1, gear2, gear3, gear4;
+    public Transform gear1, gear2, gear3, gear4;
     [SerializeField] float gear1Rot , gear2Rot, gear3Rot, gear4Rot;
+    [SerializeField] float diff = 0.1f;
     [SerializeField] bool puzzleSolved = false;
     private float difference = 0.1f;
     
@@ -58,5 +59,16 @@ public class LockPuzzle : MonoBehaviour
     //        }
     //    }
     //}
+
+    private void RotationCheck(Transform ob)
+    {
+        Quaternion targetRotation = ob.rotation;
+        if (Quaternion.Angle(transform.rotation, targetRotation) < diff)
+        {
+            // Om rotationen är tillräckligt nära, sätt boolen till true
+            Debug.Log("Rotation är lika");
+        }
+
+    }
 
 }

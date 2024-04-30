@@ -56,8 +56,8 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 2
-  m_Radius: 0.5
+  m_Height: 1.8
+  m_Radius: 0.4
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -101,9 +101,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 895c15c88074c4c4bb990273547cbd21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement: {fileID: 5308987483844802528}
-  mouseController: {fileID: 5764971704496133717}
-  playerInput: {fileID: 8607406823370898616}
 --- !u!114 &8607406823370898616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,7 +255,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.25
   far clip plane: 1000
   field of view: 60
   orthographic: 0

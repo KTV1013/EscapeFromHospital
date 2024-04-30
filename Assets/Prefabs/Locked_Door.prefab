@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2616483344215055983}
   - component: {fileID: 1149655339376551346}
   - component: {fileID: 9066140564285314684}
+  - component: {fileID: 606875966158468449}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -83,6 +84,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &606875966158468449
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550998264733852824}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 88.17685, y: 180.67444, z: 4.9999995}
+  m_Center: {x: 39.196304, y: 96.05774, z: 0}
 --- !u!1 &2232483845956865871
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,7 +429,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7272256737559755433}
-  - component: {fileID: 2245835720831888874}
+  - component: {fileID: 8841831105115104980}
+  - component: {fileID: 9073683259014135418}
+  - component: {fileID: 3021834759146673534}
   m_Layer: 0
   m_Name: Single_Door
   m_TagString: Untagged
@@ -434,27 +458,85 @@ Transform:
   - {fileID: 4982973980074555598}
   m_Father: {fileID: 1235686954541808254}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &2245835720831888874
-BoxCollider:
+--- !u!54 &8841831105115104980
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5884629905897958464}
-  m_Material: {fileID: 0}
+  serializedVersion: 4
+  m_Mass: 5
+  m_Drag: 0
+  m_AngularDrag: 5
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!59 &9073683259014135418
+HingeJoint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5884629905897958464}
+  m_ConnectedBody: {fileID: 4430056107754022961}
+  m_ConnectedArticulationBody: {fileID: 0}
+  m_Anchor: {x: -98.88, y: 0, z: 0}
+  m_Axis: {x: 0, y: 1, z: 0}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_UseSpring: 1
+  m_Spring:
+    spring: 3
+    damper: 7
+    targetPosition: 0
+  m_UseMotor: 0
+  m_Motor:
+    targetVelocity: 0
+    force: 0
+    freeSpin: 0
+  m_UseLimits: 1
+  m_ExtendedLimits: 0
+  m_UseAcceleration: 0
+  m_Limits:
+    min: -141.91
+    max: 143.01
+    bounciness: 0
+    bounceMinVelocity: 0.2
+    contactDistance: 0
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 1
+  m_MassScale: 1
+  m_ConnectedMassScale: 1
+--- !u!114 &3021834759146673534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5884629905897958464}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 92.21404, y: 189.12836, z: 5}
-  m_Center: {x: -46.1, y: 94.961365, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b8c48f6e2fb189458d52a7b7d773ea1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drag: 7
 --- !u!1 &7152117421995997620
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,6 +550,7 @@ GameObject:
   - component: {fileID: 5391136231572010360}
   - component: {fileID: 7071528105971676740}
   - component: {fileID: 1560635696750883517}
+  - component: {fileID: 4430056107754022961}
   m_Layer: 0
   m_Name: Locked_Door
   m_TagString: Untagged
@@ -583,6 +666,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 13.059187, y: 200, z: 11.950293}
   m_Center: {x: 6.4, y: 99.99998, z: 0.0000011175871}
+--- !u!54 &4430056107754022961
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7152117421995997620}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &7792333212077830331
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,6 +9,7 @@ using UnityEngine.InputSystem.Interactions;
 [RequireComponent(typeof(PlayerMovement))]
 public class Interactor : MonoBehaviour
 {
+    float range = 2f;
     PlayerInput playerInput;
     Interactable interactedObject;
     PlayerMovement playerMovement;
@@ -67,7 +68,7 @@ public class Interactor : MonoBehaviour
         Vector3 forward = Camera.main.transform.forward;
         Ray mouseRay = new(position, forward);
 
-        if (Physics.Raycast(mouseRay, out RaycastHit hit))
+        if (Physics.Raycast(mouseRay, out RaycastHit hit, range))
         {
             if (hit.transform.TryGetComponent(out interactedObject))
             {

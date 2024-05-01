@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class CodeLockPuzzle : MonoBehaviour
 {
-    Ray ray;
+    RayCasting rayCasting;
     public GameObject gear1, gear2, gear3, gear4;
     [SerializeField] Quaternion gear1Rot, gear2Rot, gear3Rot, gear4Rot;
     [SerializeField] bool puzzleSolved = false;
@@ -16,49 +16,38 @@ public class CodeLockPuzzle : MonoBehaviour
 
     void Start()
     {
-
+        rayCasting = GameObject.FindGameObjectWithTag("Player").GetComponent<RayCasting>();
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-            shootRay();
+            rayCasting.ShootRay();
             CodeCheck();
-
-        }
-    }
-
-    void shootRay()
-    {
-        if (Physics.Raycast(ray, out RaycastHit hitInfo))
-        {
-            if (hitInfo.collider.CompareTag("Gear"))
-            {                
-                hitInfo.collider.gameObject.transform.Rotate(new Vector3(-36f,0f,0f));
-            }
         }
     }
 
     void CodeCheck()
     {
-        if (Mathf.Approximately(gear1.transform.rotation.eulerAngles.x, gear1Rot.eulerAngles.x)){ Debug.Log("Gear1 done"); }
-        if (Mathf.Approximately(gear2.transform.rotation.eulerAngles.x, gear2Rot.eulerAngles.x)) { Debug.Log("Gear2 done"); }
-        if (Mathf.Approximately(gear3.transform.rotation.eulerAngles.x, gear3Rot.eulerAngles.x)) { Debug.Log("Gear3 done"); }
-        if (Mathf.Approximately(gear4.transform.rotation.eulerAngles.x, gear4Rot.eulerAngles.x)) { Debug.Log("Gear4 done"); }
+        if ((Quaternion.Angle(gear1.transform.rotation, gear1Rot) < difference)) { Debug.Log("Gear1 done"); }
+        if ((Quaternion.Angle(gear2.transform.rotation, gear2Rot) < difference)) { Debug.Log("Gear2 done"); }
+        if ((Quaternion.Angle(gear3.transform.rotation, gear3Rot) < difference)) { Debug.Log("Gear3 done"); }
+        if ((Quaternion.Angle(gear4.transform.rotation, gear4Rot) < difference)) { Debug.Log("Gear4 done"); }
 
-
-
-
-        if (Mathf.Approximately(gear1.transform.rotation.eulerAngles.x, gear1Rot.eulerAngles.x) &&
-            Mathf.Approximately(gear2.transform.rotation.eulerAngles.x, gear2Rot.eulerAngles.x) &&
-            Mathf.Approximately(gear3.transform.rotation.eulerAngles.x, gear3Rot.eulerAngles.x) &&
-            Mathf.Approximately(gear4.transform.rotation.eulerAngles.x, gear4Rot.eulerAngles.x))
+        if (Quaternion.Angle(gear1.transform.rotation, gear1Rot) < difference &&
+            Quaternion.Angle(gear2.transform.rotation, gear2Rot) < difference &&
+            Quaternion.Angle(gear3.transform.rotation, gear3Rot) < difference &&
+            Quaternion.Angle(gear4.transform.rotation, gear4Rot) < difference)
         {
             puzzleSolved = true;
             Debug.Log("Puzzle Solved!");
         }
 
+    }
+
+    public bool CodeStatus ()
+    {
+        return puzzleSolved;
     }
 }

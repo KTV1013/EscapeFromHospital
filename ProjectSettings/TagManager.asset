@@ -9,6 +9,7 @@ TagManager:
   - Flashlight
   - Battery
   - Gear
+  - Door
   layers:
   - Default
   - TransparentFX

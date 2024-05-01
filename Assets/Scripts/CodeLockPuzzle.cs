@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -23,9 +24,10 @@ public class CodeLockPuzzle : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-            shootRay();          
+            shootRay();
+            CodeCheck();
+
         }
-        CodeCheck();
     }
 
     void shootRay()
@@ -34,33 +36,29 @@ public class CodeLockPuzzle : MonoBehaviour
         {
             if (hitInfo.collider.CompareTag("Gear"))
             {                
-                hitInfo.collider.gameObject.transform.Rotate(new Vector3(36f,0f,0f));
+                hitInfo.collider.gameObject.transform.Rotate(new Vector3(-36f,0f,0f));
             }
         }
     }
 
     void CodeCheck()
     {
+        if (Mathf.Approximately(gear1.transform.rotation.eulerAngles.x, gear1Rot.eulerAngles.x)){ Debug.Log("Gear1 done"); }
+        if (Mathf.Approximately(gear2.transform.rotation.eulerAngles.x, gear2Rot.eulerAngles.x)) { Debug.Log("Gear2 done"); }
+        if (Mathf.Approximately(gear3.transform.rotation.eulerAngles.x, gear3Rot.eulerAngles.x)) { Debug.Log("Gear3 done"); }
+        if (Mathf.Approximately(gear4.transform.rotation.eulerAngles.x, gear4Rot.eulerAngles.x)) { Debug.Log("Gear4 done"); }
 
-        if (Quaternion.Angle(gear1.transform.rotation, gear1Rot) < difference && 
-            Quaternion.Angle(gear2.transform.rotation, gear2Rot) < difference &&
-            Quaternion.Angle(gear3.transform.rotation, gear3Rot) < difference &&
-            Quaternion.Angle(gear4.transform.rotation, gear4Rot) < difference)
+
+
+
+        if (Mathf.Approximately(gear1.transform.rotation.eulerAngles.x, gear1Rot.eulerAngles.x) &&
+            Mathf.Approximately(gear2.transform.rotation.eulerAngles.x, gear2Rot.eulerAngles.x) &&
+            Mathf.Approximately(gear3.transform.rotation.eulerAngles.x, gear3Rot.eulerAngles.x) &&
+            Mathf.Approximately(gear4.transform.rotation.eulerAngles.x, gear4Rot.eulerAngles.x))
         {
             puzzleSolved = true;
-        }
-    }
-
-
-    private void RotationCheck(Transform ob)
-    {
-        Quaternion targetRotation = ob.rotation;
-        if (Quaternion.Angle(transform.rotation, targetRotation) < diff)
-        {
-            // Om rotationen �r tillr�ckligt n�ra, s�tt boolen till true
-            Debug.Log("Rotation �r lika");
+            Debug.Log("Puzzle Solved!");
         }
 
     }
-
 }

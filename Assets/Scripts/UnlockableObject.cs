@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class UlockableObject : Interactable
+public class UnlockableObject : Interactable
 {
     EquippedItem equippedGetter;
     public Item Key;
@@ -20,10 +20,10 @@ public class UlockableObject : Interactable
 
     public override void StartInteraction()
     {
-        if (equippedGetter.GetItem() == Key.name) 
+        if (equippedGetter.GetItem().Equals(Key.name)) 
         {
             Unlock.Invoke();
-            this.enabled = false;
+            Destroy(this);
         }
     }
 }

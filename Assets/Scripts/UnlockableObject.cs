@@ -20,6 +20,11 @@ public class UnlockableObject : Interactable
 
     public override void StartInteraction()
     {
+        if (Key == null)
+        {
+            Debug.LogError("Missing Key: " + name);
+            return;
+        }
         if (equippedGetter.GetItem().Equals(Key.name)) 
         {
             Unlock.Invoke();

@@ -30,9 +30,11 @@ public class PlayerInputManager : Singleton<PlayerInputManager>
 
     public void ResetInput()
     {
-        
-        currentInput.enabled = false;
-        currentInput = null;
+        if (currentInput != null) 
+        {
+            currentInput.enabled = false;
+            currentInput = null;
+        }
         interactor.SetInput(true);
     }
 }

@@ -6,7 +6,7 @@ public class EquippedItem : MonoBehaviour
 {
     public GameObject itemPlaceInHand;
     public EquipmentSlot equipmentSlot;
-    GameObject item;
+    public GameObject item;
     ItemInSlot itemInSlot;
 
     private void Update()
@@ -48,7 +48,7 @@ public class EquippedItem : MonoBehaviour
         }
         else
         {
-            return item.name;
+            return item.GetComponent<Item>().name;
 
         }
     }

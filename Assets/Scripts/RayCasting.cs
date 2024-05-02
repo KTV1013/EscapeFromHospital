@@ -33,9 +33,11 @@ public class RayCasting : MonoBehaviour
     // Funktion för att rotarea Gear när man träffar den med en ray
     private void RotateGear(GameObject gear, bool hitingGear)
     {
+        
         if (hitingGear)
         {
             gear.transform.Rotate(new Vector3(-36f, 0f, 0f));
+            Debug.Log("Roterad");
 
         }
     }

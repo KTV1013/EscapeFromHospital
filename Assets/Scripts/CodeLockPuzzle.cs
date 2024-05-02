@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class CodeLockPuzzle : MonoBehaviour
 {
-    RayCasting rayCasting;
+    //RayCasting rayCasting;
     public GameObject gear1, gear2, gear3, gear4;
     [SerializeField] Quaternion gear1Rot, gear2Rot, gear3Rot, gear4Rot;
     [SerializeField] bool puzzleSolved = false;
@@ -16,14 +16,14 @@ public class CodeLockPuzzle : MonoBehaviour
 
     void Start()
     {
-        rayCasting = GameObject.FindGameObjectWithTag("Player").GetComponent<RayCasting>();
+        //rayCasting = GameObject.FindGameObjectWithTag("Player").GetComponent<RayCasting>();
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            rayCasting.ShootRay();
+            //rayCasting.ShootRay();
             CodeCheck();
         }
     }

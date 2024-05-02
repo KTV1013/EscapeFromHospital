@@ -4,20 +4,19 @@ using UnityEngine;
 
 public class FlashlightPuzzle : MonoBehaviour
 {
-    //Inventory inventory;
     List<InventorySlot> slots;
-    [SerializeField] List<string> batteris = new List<string>();
     EquippedItem equippedItem;
     GameObject player;
 
     [SerializeField] bool hasBattery = false;
     [SerializeField] bool hasFlashlight = false;
-    [SerializeField] Light spotLight;
+    public Light spotLight;
+
+    [SerializeField] bool on = false;
+    [SerializeField] bool off = true;
     
     void Start()
     {
-       //inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
-       //slots = inventory.GetInventory();
        player = GameObject.FindGameObjectWithTag("Player");
        slots = player.GetComponent<Inventory>().GetInventory();
        equippedItem = player.GetComponent<EquippedItem>();
@@ -30,8 +29,19 @@ public class FlashlightPuzzle : MonoBehaviour
         FlashlightCheck();
         if (hasBattery && hasFlashlight)
         {
-            spotLight.enabled = true;
+            //TurnOn();
+            if (off && Input.GetKeyDown(KeyCode.F))
+            {
+                Debug.Log("Light trun on");
+                TurnOn();
+            }
+            else if (on && Input.GetKeyDown(KeyCode.F))
+            {
+                Debug.Log("Light off");
+                TurnOff();
+            }
         }
+
     }
 
     private void BatteryCheck()
@@ -44,7 +54,6 @@ public class FlashlightPuzzle : MonoBehaviour
                 string childName = child.name;
                 if (childName == "Battery")
                 {
-                    batteris.Add(childName);
                     hasBattery = true;
                 }
             }
@@ -61,5 +70,18 @@ public class FlashlightPuzzle : MonoBehaviour
                 hasFlashlight = true;
             }
         }
+    }
+
+    private void TurnOn()
+    {
+        spotLight.enabled = true;
+        off = false;
+        on = true;
+    }
+    private void TurnOff()
+    {
+        spotLight.enabled=false;
+        off = true;
+        on = false;
     }
 }

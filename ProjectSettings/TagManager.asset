@@ -10,6 +10,7 @@ TagManager:
   - Battery
   - Gear
   - Door
+  - LockerDoor
   layers:
   - Default
   - TransparentFX

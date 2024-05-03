@@ -27,6 +27,8 @@ public class Inventory : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Tab))
             toggleInventory(!inventory.activeInHierarchy);
+
+
     }
 
     private void itemRaycast(bool hasClicked = false)
@@ -55,7 +57,7 @@ public class Inventory : MonoBehaviour
                 else
                 {
                     Item newItem = hit.collider.GetComponent<Item>();
-                    itemName.text = newItem.name;
+                    itemName.text = newItem?.name;
                 }
             }
         }
@@ -102,4 +104,9 @@ public class Inventory : MonoBehaviour
         //CameraController mainCamera = GameObject.Find("Main Camera").GetComponent<CameraController>();
         //mainCamera.CameraRotator = enable ? false : true;
     }   
+
+    public List<InventorySlot> GetInventory()
+    {
+        return inventorySlots; 
+    }
 }

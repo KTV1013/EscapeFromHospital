@@ -43,7 +43,6 @@ public class ItemInSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void OnPointerExit(PointerEventData pointerEventData)
     {
-
         if (desplayItem != null)
         {
             Destroy(desplayItem.item);

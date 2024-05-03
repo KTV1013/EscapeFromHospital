@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Button
   - ItemIcon
+  - Flashlight
+  - Battery
+  - Gear
+  - Door
+  - LockerDoor
   layers:
   - Default
   - TransparentFX

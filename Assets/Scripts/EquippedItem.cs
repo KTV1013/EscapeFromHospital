@@ -6,11 +6,15 @@ public class EquippedItem : MonoBehaviour
 {
     public GameObject itemPlaceInHand;
     public EquipmentSlot equipmentSlot;
-    GameObject item;
+    public GameObject item;
     ItemInSlot itemInSlot;
 
     private void Update()
     {
+        if (equipmentSlot == null)
+        {
+            Debug.Log("null");
+        }
         if (equipmentSlot.CheckItem())
         {
             itemInSlot = equipmentSlot.GetComponentInChildren<ItemInSlot>();
@@ -34,6 +38,18 @@ public class EquippedItem : MonoBehaviour
             item.SetActive(false);
             item.GetComponent<Collider>().enabled = true;
             item.transform.SetParent(itemPlaceInHand.transform.parent.transform);
+        }
+    }
+    public string GetItem()
+    {
+        if (item == null)
+        {
+            return "null";
+        }
+        else
+        {
+            return item.GetComponent<Item>().name;
+
         }
     }
 }

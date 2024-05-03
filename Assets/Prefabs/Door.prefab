@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 3890690238349092940}
   - component: {fileID: 2487818310354339954}
   - component: {fileID: 5420932423307654407}
-  - component: {fileID: 7508266710589864667}
+  - component: {fileID: 6585936939851618144}
   m_Layer: 0
   m_Name: Single_Door
   m_TagString: Untagged
@@ -163,7 +163,7 @@ HingeJoint:
   serializedVersion: 2
   m_UseSpring: 1
   m_Spring:
-    spring: 3
+    spring: 8
     damper: 7
     targetPosition: 0
   m_UseMotor: 0
@@ -186,7 +186,7 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &7508266710589864667
+--- !u!114 &6585936939851618144
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -195,10 +195,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2067642588659754205}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b8c48f6e2fb189458d52a7b7d773ea1, type: 3}
+  m_Script: {fileID: 11500000, guid: ac5d9c923b274bf42beaad0f7e5f9b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drag: 5
+  force: 40
 --- !u!1 &3198477094076475142
 GameObject:
   m_ObjectHideFlags: 0

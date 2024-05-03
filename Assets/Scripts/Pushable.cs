@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Pushable : Interactable
 {
-    [SerializeField] protected float force = 100f;
+    [SerializeField] protected Vector3 localForce = new(0, 0, -40);
     Rigidbody body;
     bool isPushing = false;
     public override void EndInteraction()
@@ -28,7 +28,10 @@ public class Pushable : Interactable
     {
         if (isPushing) 
         {
-            body.AddForce(force * transform.forward);
+            Vector3 direction = transform.forward * localForce.z;
+            direction += transform.right * localForce.x;
+            direction += transform.up * localForce.y;
+            body.AddForce(direction);
         }
     }
 }

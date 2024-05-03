@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f0e5b2ff302f5904eb28894b35f13138
+guid: 18efc06148f1c2e449b3849d18599232
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,8 +7,38 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: lambert1
-    second: {fileID: 2100000, guid: afeb165e19f64cd49945d2ebf1cf0010, type: 2}
+      name: M_alarmLampGlass
+    second: {fileID: 2100000, guid: e9c695bcfea3b5c4981469167be7c5c1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_alrarmLampMetalic
+    second: {fileID: 2100000, guid: 1e25a639cf6659f4abcb3abacc24936c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_belt
+    second: {fileID: 2100000, guid: 56315f65b0d860c4391c46febc076ab5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_body
+    second: {fileID: 2100000, guid: ad20bb9220cc4034b93be678d2ce3ab5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_door
+    second: {fileID: 2100000, guid: 3db12584fb47ffc41b121ab15060842a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_screenGlass
+    second: {fileID: 2100000, guid: a1f291444bc3a1a43a7f0f6ae694f022, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_screenImage
+    second: {fileID: 2100000, guid: 5ff4783d9286b0847a44b5bc1edcffb8, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -11,6 +11,8 @@ TagManager:
   - Gear
   - Door
   - LockerDoor
+  - Trash Can
+  - Locker
   layers:
   - Default
   - TransparentFX

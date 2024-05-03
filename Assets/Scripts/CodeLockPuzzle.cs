@@ -17,6 +17,7 @@ public class CodeLockPuzzle : MonoBehaviour
     [SerializeField] bool puzzleSolved = false;
     private float difference = 0.1f;
     public GameObject lockObject;
+    
 
     void Start()
     {

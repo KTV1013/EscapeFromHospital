@@ -106,7 +106,7 @@ public class Inventory : MonoBehaviour
     }   
 
     public List<InventorySlot> GetInventory()
-    {
+    {        
         return inventorySlots; 
     }
 }

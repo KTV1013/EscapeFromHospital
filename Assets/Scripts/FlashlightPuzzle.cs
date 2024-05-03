@@ -18,8 +18,8 @@ public class FlashlightPuzzle : MonoBehaviour
     void Start()
     {
        player = GameObject.FindGameObjectWithTag("Player");
-       slots = player.GetComponent<Inventory>().GetInventory();
-       equippedItem = player.GetComponent<EquippedItem>();
+        slots = player.GetComponent<Inventory>().GetInventory();
+        equippedItem = player.GetComponent<EquippedItem>();
     }
 
     
@@ -29,7 +29,6 @@ public class FlashlightPuzzle : MonoBehaviour
         FlashlightCheck();
         if (hasBattery && hasFlashlight)
         {
-            //TurnOn();
             if (off && Input.GetKeyDown(KeyCode.F))
             {
                 Debug.Log("Light trun on");
@@ -55,6 +54,7 @@ public class FlashlightPuzzle : MonoBehaviour
                 if (childName == "Battery")
                 {
                     hasBattery = true;
+                    return;
                 }
             }
 
@@ -68,6 +68,10 @@ public class FlashlightPuzzle : MonoBehaviour
             if (equippedItem.GetItem() == "Flashlight")
             {
                 hasFlashlight = true;
+            }
+            else
+            {
+                hasFlashlight = false;
             }
         }
     }

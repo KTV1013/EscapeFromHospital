@@ -7,6 +7,10 @@ public class RayCasting : MonoBehaviour
     Ray ray;
     float maxDistance = 5f;
     EquippedItem equippedItem;
+    public Animator TrashCanAnimation;
+    public bool opend = false;
+    public bool lockeropen = false;
+    public Animator LockerAnimation; 
     private void Start()
     {
         equippedItem = GameObject.FindGameObjectWithTag("Player").GetComponent<EquippedItem>();
@@ -27,7 +31,27 @@ public class RayCasting : MonoBehaviour
         {
             RotateGear(hitInfo.collider.gameObject, hitInfo.collider.CompareTag("Gear"));
             OpenRoomDoor(hitInfo.collider.CompareTag("Door"), equippedItem.GetItem());
+            if (hitInfo.collider.gameObject.CompareTag("Trash Can"))
+            {
+                Debug.Log("Trash can");
+                if (!opend)
+                {
+                    TrashCanAnimation.SetBool("isOpen", true);
+                    opend = true;
+                }
+            }
         }
+
+        if (hitInfo.collider.gameObject.CompareTag("Locker"))
+        {
+            Debug.Log("Locker");
+            if (!lockeropen)
+            {
+                LockerAnimation.SetBool("IsClosed", true );
+                lockeropen = true;
+            }
+        }
+
     }
 
     // Funktion för att rotarea Gear när man träffar den med en ray

@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 462727a42613deb4cb519447e162dbd4
   - enabled: 1
-    path: Assets/Scenes/PlayScene.unity
-    guid: 3a0b9a9d6bc501e4b809d26be84c0391
+    path: Assets/Scenes/Tonis Grejer.unity
+    guid: 84cfcc9104c8efe48aee492807c137b0
   m_configObjects: {}

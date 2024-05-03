@@ -11,8 +11,9 @@ public class Timer : MonoBehaviour
     [SerializeField] int minutes;
     [SerializeField] int seconds;
     //[SerializeField] TextMeshProUGUI timerText;
+    public TextMeshProUGUI timerText;
 
-    [ContextMenu("Start Timer")]
+    //[ContextMenu("Start Timer")]
     //[SerializeField] TextMeshProUGUI timerText;
 
     private void Awake()
@@ -23,10 +24,11 @@ public class Timer : MonoBehaviour
     {
         minutes = Mathf.FloorToInt(timeLeft / 60);
         seconds = Mathf.FloorToInt(timeLeft % 60);
-
+        
         startTimer();
+        Debug.Log(seconds);
         HalvTimeCheck();
-        LastMinuteCheck(minutes,seconds);
+        LastMinuteCheck(minutes, seconds);
     }
 
     public float GetTime() {  return timeLeft; }
@@ -41,7 +43,7 @@ public class Timer : MonoBehaviour
             timeLeft = 0;
         }
 
-        //timerText.text = string.Format("{0:00}:{1:00}",minutes,seconds);
+        timerText.text = string.Format("{0:00}:{1:00}",minutes,seconds);
     }
 
     private void HalvTimeCheck()
@@ -49,7 +51,7 @@ public class Timer : MonoBehaviour
         
         if (timeLeft <= time/2)
         {
-            //timerText.color = Color.red;
+            timerText.color = Color.red;
             Debug.Log("Halv time is gone");
         }
     }

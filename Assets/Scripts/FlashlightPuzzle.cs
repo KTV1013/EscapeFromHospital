@@ -65,7 +65,7 @@ public class FlashlightPuzzle : MonoBehaviour
     {
         if (equippedItem.name != null)
         {
-            if (equippedItem.GetItem() == "flashlight")
+            if (equippedItem.GetItem() == "Flashlight")
             {
                 hasFlashlight = true;
             }

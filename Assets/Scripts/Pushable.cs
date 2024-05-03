@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Pushable : Interactable
 {
+    [SerializeField] protected float enddelay = 5f;
     [SerializeField] protected Vector3 localForce = new(0, 0, -40);
     Rigidbody body;
     bool isPushing = false;
     public override void EndInteraction()
     {
-        isPushing = false;
+        Invoke(nameof(StopPushing), enddelay);
     }
-
+    
     public override void StartInteraction()
     {
         isPushing = true;
@@ -21,6 +22,11 @@ public class Pushable : Interactable
     void Start()
     {
         body = GetComponent<Rigidbody>();
+    }
+
+    void StopPushing() 
+    {
+        isPushing = false; 
     }
 
     // Update is called once per frame

@@ -373,6 +373,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 388233781121313343, guid: 27fd78e2190b7e44f87c6537751c584f, type: 3}
+      propertyPath: LockerAnimation
+      value: 
+      objectReference: {fileID: 1059323313}
+    - target: {fileID: 388233781121313343, guid: 27fd78e2190b7e44f87c6537751c584f, type: 3}
       propertyPath: TrashCanAnimation
       value: 
       objectReference: {fileID: 697100737}
@@ -1387,6 +1391,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6442cc7124b1504438779db0e3e0dae3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1059323313 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4549925558384215815, guid: 54826e89829d5ce468f74f9d90940c37, type: 3}
+  m_PrefabInstance: {fileID: 1205660404}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1084191863 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7163271194423495348, guid: 27fd78e2190b7e44f87c6537751c584f, type: 3}
@@ -1421,6 +1430,10 @@ PrefabInstance:
       propertyPath: spotLight
       value: 
       objectReference: {fileID: 1568150690}
+    - target: {fileID: 3765259840597571641, guid: 54826e89829d5ce468f74f9d90940c37, type: 3}
+      propertyPath: m_Name
+      value: door_locker2
+      objectReference: {fileID: 0}
     - target: {fileID: 5741156426335977743, guid: 54826e89829d5ce468f74f9d90940c37, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.53331

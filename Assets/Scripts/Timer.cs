@@ -28,7 +28,7 @@ public class Timer : MonoBehaviour
         startTimer();
         Debug.Log(seconds);
         HalvTimeCheck();
-        LastMinuteCheck(minutes, seconds);
+        LastMinuteCheck(minutes, seconds);        
     }
 
     public float GetTime() {  return timeLeft; }

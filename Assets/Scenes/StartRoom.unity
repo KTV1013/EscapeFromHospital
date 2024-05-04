@@ -1032,6 +1032,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5875487963288390412, guid: 27fd78e2190b7e44f87c6537751c584f, type: 3}
+      propertyPath: GearSound
+      value: 
+      objectReference: {fileID: 8300000, guid: d9d2792a4c2b6504387e382e9f877576, type: 3}
+    - target: {fileID: 5875487963288390412, guid: 27fd78e2190b7e44f87c6537751c584f, type: 3}
+      propertyPath: UnlockSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c4e0e03ce8610c24b9794835d2b79a94, type: 3}
+    - target: {fileID: 5875487963288390412, guid: 27fd78e2190b7e44f87c6537751c584f, type: 3}
+      propertyPath: switchingsound
+      value: 
+      objectReference: {fileID: 8300000, guid: 5ff97975c3ca0ab49a07124f232c72ad, type: 3}
     - target: {fileID: 6103907849045939938, guid: 27fd78e2190b7e44f87c6537751c584f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1183,6 +1195,10 @@ PrefabInstance:
     - target: {fileID: 7756568778682082871, guid: 27fd78e2190b7e44f87c6537751c584f, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872537052478704275, guid: 27fd78e2190b7e44f87c6537751c584f, type: 3}
+      propertyPath: m_TagString
+      value: Audio
       objectReference: {fileID: 0}
     - target: {fileID: 8113472747146279051, guid: 27fd78e2190b7e44f87c6537751c584f, type: 3}
       propertyPath: m_AnchorMax.y

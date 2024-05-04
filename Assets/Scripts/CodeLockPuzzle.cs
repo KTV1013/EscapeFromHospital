@@ -17,11 +17,13 @@ public class CodeLockPuzzle : MonoBehaviour
     [SerializeField] bool puzzleSolved = false;
     private float difference = 0.1f;
     public GameObject lockObject;
-    
+   
+  
 
     void Start()
     {
         //rayCasting = GameObject.FindGameObjectWithTag("Player").GetComponent<RayCasting>();
+        
     }
 
     void Update()

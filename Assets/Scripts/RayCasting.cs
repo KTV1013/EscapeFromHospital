@@ -10,10 +10,12 @@ public class RayCasting : MonoBehaviour
     public Animator TrashCanAnimation;
     public bool opend = false;
     public bool lockeropen = false;
-    public Animator LockerAnimation; 
+    public Animator LockerAnimation;
+    AudioManager audioManager;
     private void Start()
     {
         equippedItem = GameObject.FindGameObjectWithTag("Player").GetComponent<EquippedItem>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
     private void Update()
     {
@@ -60,6 +62,7 @@ public class RayCasting : MonoBehaviour
         
         if (hitingGear)
         {
+            audioManager.PlaySFX(audioManager.GearSound);
             gear.transform.Rotate(new Vector3(-36f, 0f, 0f));
             Debug.Log("Roterad");
 

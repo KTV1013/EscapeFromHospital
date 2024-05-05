@@ -25,7 +25,7 @@ public class RayCasting : MonoBehaviour
  
     public void ShootRay()
     {
-        ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f,0));
 
         if (Physics.Raycast(ray, out RaycastHit hitInfo, maxDistance))
         {

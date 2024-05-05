@@ -12,11 +12,12 @@ public class CodeLockPuzzle : MonoBehaviour
     //RayCasting rayCasting;
     public Animator AnimatorForLock;
     public Animator AnimatorForLockerDoor; 
-    public GameObject gear1, gear2, gear3, gear4;
-    [SerializeField] Quaternion gear1Rot, gear2Rot, gear3Rot, gear4Rot;
+    public GameObject gear1, gear2, gear3, gear4;    
+    public Quaternion gear1Rot, gear2Rot, gear3Rot, gear4Rot;
+    public GameObject lockObject;
+
     [SerializeField] bool puzzleSolved = false;
     private float difference = 0.1f;
-    public GameObject lockObject;
     
 
     void Start()
@@ -37,7 +38,6 @@ public class CodeLockPuzzle : MonoBehaviour
         //if ((Quaternion.Angle(gear2.transform.rotation, gear2Rot) < difference)) { Debug.Log("Gear2 done"); }
         //if ((Quaternion.Angle(gear3.transform.rotation, gear3Rot) < difference)) { Debug.Log("Gear3 done"); }
         //if ((Quaternion.Angle(gear4.transform.rotation, gear4Rot) < difference)) { Debug.Log("Gear4 done"); }
-
         if (Quaternion.Angle(gear1.transform.rotation, gear1Rot) < difference &&
             Quaternion.Angle(gear2.transform.rotation, gear2Rot) < difference &&
             Quaternion.Angle(gear3.transform.rotation, gear3Rot) < difference &&

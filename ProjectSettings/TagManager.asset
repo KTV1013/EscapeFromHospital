@@ -13,6 +13,8 @@ TagManager:
   - LockerDoor
   - Trash Can
   - Locker
+  - Audio
+  - Key2
   layers:
   - Default
   - TransparentFX

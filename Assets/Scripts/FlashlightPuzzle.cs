@@ -14,12 +14,16 @@ public class FlashlightPuzzle : MonoBehaviour
 
     [SerializeField] bool on = false;
     [SerializeField] bool off = true;
+
+    AudioManager audioManager;
     
     void Start()
     {
        player = GameObject.FindGameObjectWithTag("Player");
         slots = player.GetComponent<Inventory>().GetInventory();
         equippedItem = player.GetComponent<EquippedItem>();
+
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     
@@ -78,12 +82,16 @@ public class FlashlightPuzzle : MonoBehaviour
 
     private void TurnOn()
     {
+        Debug.Log("ON");
+        audioManager.PlaySFX(audioManager.switchingsound);
         spotLight.enabled = true;
         off = false;
         on = true;
     }
     private void TurnOff()
     {
+        Debug.Log("OFF");
+        audioManager.PlaySFX(audioManager.switchingsound);
         spotLight.enabled=false;
         off = true;
         on = false;

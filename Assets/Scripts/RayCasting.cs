@@ -64,7 +64,7 @@ public class RayCasting : MonoBehaviour
         if (hitingGear)
         {
             gear.transform.Rotate(new Vector3(-36f, 0f, 0f));
-            //audioManager.PlaySFX(audioManager.GearSound);
+            audioManager.PlaySFX(audioManager.GearSound);
             Debug.Log("Roterad");
 
         }

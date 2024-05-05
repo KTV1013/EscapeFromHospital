@@ -10,27 +10,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 704beed990cfd324b8b10c386a88638a, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.054244
+      value: 0.019438766
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 704beed990cfd324b8b10c386a88638a, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.054244
+      value: 0.019438766
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 704beed990cfd324b8b10c386a88638a, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.054244
+      value: 0.019438766
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 704beed990cfd324b8b10c386a88638a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.1052
+      value: -4.2351
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 704beed990cfd324b8b10c386a88638a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.9566
+      value: -1.8711
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 704beed990cfd324b8b10c386a88638a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.69315
+      value: 0.6863
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 704beed990cfd324b8b10c386a88638a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scalpel
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 704beed990cfd324b8b10c386a88638a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -71,6 +75,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 704beed990cfd324b8b10c386a88638a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7091241080298059095}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 704beed990cfd324b8b10c386a88638a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1960457869161214957}
   m_SourcePrefab: {fileID: 100100000, guid: 704beed990cfd324b8b10c386a88638a, type: 3}
 --- !u!1 &8737975960265778987 stripped
 GameObject:
@@ -98,3 +105,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.25135833, y: 1.2389776, z: 13.628505}
   m_Center: {x: -3.733481, y: 2.457029, z: -0.20336828}
+--- !u!114 &1960457869161214957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8737975960265778987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78d334cf7abe0cc439e148c708685f32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Scalpel
+  icon: {fileID: 21300000, guid: c042db536d1aa4f44885f6a7ae686bd0, type: 3}

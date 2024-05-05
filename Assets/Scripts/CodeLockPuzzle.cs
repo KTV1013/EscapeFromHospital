@@ -11,13 +11,14 @@ public class CodeLockPuzzle : MonoBehaviour
 {
     //RayCasting rayCasting;
     public Animator AnimatorForCodeLock;
-    public Animator AnimatorLockerDoor; 
+    public Animator AnimatorLockerDoor;
     public GameObject gear1, gear2, gear3, gear4;
     public Quaternion gear1Rot, gear2Rot, gear3Rot, gear4Rot;
     [SerializeField] bool puzzleSolved = false;
     private float difference = 0.1f;
     public GameObject lockObject;
     bool puzzelSolvedsound = false;
+    bool puzzelsolvedsoundforNumbers = false;
     AudioManager audioManager;
 
 
@@ -63,21 +64,39 @@ public class CodeLockPuzzle : MonoBehaviour
     {
         if (puzzleSolved == true && !puzzelSolvedsound)
         {
-            audioManager.PlaySFX(audioManager.UnlockSound);
+            audioManager.PlaySFX(audioManager.UnlockSoundForLockWithCode);
             AnimatorForCodeLock.SetBool("IsLocked", true);
             StartCoroutine(LockerDoorOpening());
             puzzelSolvedsound=true;
 
         }
+
+        if (puzzleSolved == true && !puzzelsolvedsoundforNumbers)
+        {
+            audioManager.PlaySFX(audioManager.UnlockSoundForLockWithNumbers);
+            AnimatorForCodeLock.SetBool("RightNumbers", true);
+            StartCoroutine(LockerDoorOpening());
+            puzzelsolvedsoundforNumbers = true;
+
+        }
+
     }
 
     private IEnumerator LockerDoorOpening()
     {
         if (puzzleSolved == true)
         {
-            Debug.Log("Waiting 2 seconds");
+            Debug.Log("Waiting 1 seconds");
             yield return new WaitForSeconds(1);
             AnimatorLockerDoor.SetBool("IsClosed", true);
+            lockObject.transform.parent = AnimatorLockerDoor.transform;
+        }
+
+        if (puzzleSolved == true)
+        {
+            Debug.Log("Waiting 1 seconds");
+            yield return new WaitForSeconds(1);
+            AnimatorLockerDoor.SetBool("AIDClosed", true);
             lockObject.transform.parent = AnimatorLockerDoor.transform;
         }
     }

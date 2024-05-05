@@ -689,7 +689,7 @@ GameObject:
   - component: {fileID: 5875487963288390412}
   m_Layer: 0
   m_Name: Audio Manager
-  m_TagString: Untagged
+  m_TagString: Audio
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -726,10 +726,13 @@ MonoBehaviour:
   musicSource: {fileID: 6001478659153135129}
   SFXSorce: {fileID: 952439923481216650}
   BackgroundMusic: {fileID: 8300000, guid: ccb4b6cbf9645c24d96ea7e3c01f3b57, type: 3}
-  KeysSound: {fileID: 0}
-  Alarmsound: {fileID: 0}
-  UnlockSound: {fileID: 0}
+  KeysSound: {fileID: 8300000, guid: 92ec94e6802bc84468e48ecb80670acc, type: 3}
+  Alarmsound: {fileID: 8300000, guid: 873dcfd2b710eea4faeb6d70c4b15209, type: 3}
+  UnlockSoundForLockWithCode: {fileID: 8300000, guid: c4e0e03ce8610c24b9794835d2b79a94, type: 3}
   Lockedsound: {fileID: 0}
+  GearSound: {fileID: 8300000, guid: d9d2792a4c2b6504387e382e9f877576, type: 3}
+  switchingsound: {fileID: 8300000, guid: 5ff97975c3ca0ab49a07124f232c72ad, type: 3}
+  UnlockSoundForLockWithNumbers: {fileID: 8300000, guid: edfaf7600356e834995cdab20483aec8, type: 3}
 --- !u!1 &9163902931686520731
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class RayCasting : MonoBehaviour
 {
     Ray ray;
+    Ray camRay;
     float maxDistance = 5f;
     EquippedItem equippedItem;
     public Animator TrashCanAnimation;
@@ -32,39 +34,37 @@ public class RayCasting : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hitInfo, maxDistance))
         {
+            //if (hitInfo.collider.gameObject.CompareTag("Gear"))
+            //{
+            //    hitInfo.collider.gameObject.transform.Rotate(new Vector3(36f, 0f, 0f));
+            //}
             RotateGear(hitInfo.collider.gameObject, hitInfo.collider.CompareTag("Gear"));
             OpenRoomDoor(hitInfo.collider.CompareTag("Door"), equippedItem.GetItem());
-            if (hitInfo.collider.gameObject.CompareTag("Trash Can"))
-            {
-                Debug.Log("Trash can");
-                if (!opend)
-                {
-                    TrashCanAnimation.SetBool("isOpen", true);
-                    opend = true;
-                }
-            }
+
+            PlayAnimation(hitInfo.collider.gameObject.CompareTag("Trash Can"), "isOpen", opend, TrashCanAnimation);
+            PlayAnimation(hitInfo.collider.gameObject.CompareTag("Locker"), "IsClosed", lockeropen, LockerAnimation);
         }
 
-        if (hitInfo.collider.gameObject.CompareTag("Locker"))
-        {
-            Debug.Log("Locker");
-            if (!lockeropen)
-            {
-                LockerAnimation.SetBool("IsClosed", true );
-                lockeropen = true;
-            }
-        }
 
     }
 
+    private void PlayAnimation(bool objBeingHit, string animationBool, bool objStatus, Animator animation)
+    {
+        if(objBeingHit)
+        {
+            if (!objStatus)
+            {
+                animation.SetBool(animationBool, true);
+            }
+        }
+    }
     // Funktion för att rotarea Gear när man träffar den med en ray
     private void RotateGear(GameObject gear, bool hitingGear)
     {
-        
         if (hitingGear)
         {
-            audioManager.PlaySFX(audioManager.GearSound);
             gear.transform.Rotate(new Vector3(-36f, 0f, 0f));
+            //audioManager.PlaySFX(audioManager.GearSound);
             Debug.Log("Roterad");
 
         }

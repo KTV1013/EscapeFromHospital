@@ -38,10 +38,10 @@ public class CodeLockPuzzle : MonoBehaviour
 
     void CodeCheck()
     {
-        //if ((Quaternion.Angle(gear1.transform.rotation, gear1Rot) < difference)) { Debug.Log("Gear1 done"); }
-        //if ((Quaternion.Angle(gear2.transform.rotation, gear2Rot) < difference)) { Debug.Log("Gear2 done"); }
-        //if ((Quaternion.Angle(gear3.transform.rotation, gear3Rot) < difference)) { Debug.Log("Gear3 done"); }
-        //if ((Quaternion.Angle(gear4.transform.rotation, gear4Rot) < difference)) { Debug.Log("Gear4 done"); }
+        if ((Quaternion.Angle(gear1.transform.rotation, gear1Rot) < difference)) { Debug.Log("Gear1 done"); }
+        if ((Quaternion.Angle(gear2.transform.rotation, gear2Rot) < difference)) { Debug.Log("Gear2 done"); }
+        if ((Quaternion.Angle(gear3.transform.rotation, gear3Rot) < difference)) { Debug.Log("Gear3 done"); }
+        if ((Quaternion.Angle(gear4.transform.rotation, gear4Rot) < difference)) { Debug.Log("Gear4 done"); }
 
         if (Quaternion.Angle(gear1.transform.rotation, gear1Rot) < difference &&
             Quaternion.Angle(gear2.transform.rotation, gear2Rot) < difference &&

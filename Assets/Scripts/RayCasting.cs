@@ -12,6 +12,7 @@ public class RayCasting : MonoBehaviour
     public bool lockeropen = false;
     public Animator LockerAnimation;
     AudioManager audioManager;
+    
     private void Start()
     {
         equippedItem = GameObject.FindGameObjectWithTag("Player").GetComponent<EquippedItem>();

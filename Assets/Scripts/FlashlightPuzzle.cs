@@ -82,6 +82,7 @@ public class FlashlightPuzzle : MonoBehaviour
 
     private void TurnOn()
     {
+        Debug.Log("ON");
         audioManager.PlaySFX(audioManager.switchingsound);
         spotLight.enabled = true;
         off = false;
@@ -89,6 +90,7 @@ public class FlashlightPuzzle : MonoBehaviour
     }
     private void TurnOff()
     {
+        Debug.Log("OFF");
         audioManager.PlaySFX(audioManager.switchingsound);
         spotLight.enabled=false;
         off = true;

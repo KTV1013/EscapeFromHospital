@@ -17,12 +17,15 @@ public class CodeLockPuzzle : MonoBehaviour
     [SerializeField] bool puzzleSolved = false;
     private float difference = 0.1f;
     public GameObject lockObject;
-   
-  
+    bool puzzelSolvedsound = false;
+    AudioManager audioManager;
+
+
 
     void Start()
     {
         //rayCasting = GameObject.FindGameObjectWithTag("Player").GetComponent<RayCasting>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         
     }
 
@@ -58,10 +61,12 @@ public class CodeLockPuzzle : MonoBehaviour
 
     private void LockOpening()
     {
-        if (puzzleSolved == true)
+        if (puzzleSolved == true && !puzzelSolvedsound)
         {
+            audioManager.PlaySFX(audioManager.UnlockSound);
             AnimatorForLock.SetBool("IsLocked", true);
             StartCoroutine(LockerDoorOpening());
+            puzzelSolvedsound=true;
 
         }
     }

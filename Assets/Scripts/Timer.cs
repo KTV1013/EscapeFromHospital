@@ -11,11 +11,14 @@ public class Timer : MonoBehaviour
     [SerializeField] int minutes;
     [SerializeField] int seconds;
     public TextMeshProUGUI timerText;
+    AudioManager audioManager;
+    bool halvTimeAlarmPlayed = false;
 
 
     private void Awake()
     {
         timeLeft = time;
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
     private void Update()
     {
@@ -44,11 +47,13 @@ public class Timer : MonoBehaviour
 
     private void HalvTimeCheck()
     {
-        
-        if (timeLeft <= time/2)
+
+        if (timeLeft <= time / 2 && !halvTimeAlarmPlayed) 
         {
+            audioManager.PlaySFX(audioManager.Alarmsound);
+            Debug.Log("Alarm on Alarm on ");
             timerText.color = Color.red;
-            //Debug.Log("Halv time is gone");
+            halvTimeAlarmPlayed = true;
         }
     }
     private void LastMinuteCheck(int min, int sec)

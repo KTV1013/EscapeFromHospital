@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditor.PackageManager;
 
 public class Inventory : MonoBehaviour
 {
@@ -15,10 +16,12 @@ public class Inventory : MonoBehaviour
     public LayerMask itemLayer;
 
     public Image Image;
+    AudioManager audioManager;
 
     public void Start()
     {
         toggleInventory(false);
+        audioManager= GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     public void Update()
@@ -48,10 +51,20 @@ public class Inventory : MonoBehaviour
                     if(!equipmentSlot.CheckItem())
                     {
                         addItemToEquipment(newItem);
+                        
+                        if (hit.collider.gameObject.CompareTag("Key2"))
+                        {
+                            audioManager.PlaySFX(audioManager.KeysSound);
+                        }
                     }
                     else
                     {
                         addItemToInventory(newItem);
+                        if (hit.collider.gameObject.CompareTag("Key2"))
+                        {
+                            audioManager.PlaySFX(audioManager.KeysSound);
+                        }
+
                     } 
                 }
                 else
@@ -60,6 +73,9 @@ public class Inventory : MonoBehaviour
                     itemName.text = newItem?.name;
                 }
             }
+
+            
+
         }
     }
 

@@ -10,10 +10,10 @@ using UnityEngine.InputSystem;
 public class CodeLockPuzzle : MonoBehaviour
 {
     //RayCasting rayCasting;
-    public Animator AnimatorForLock;
-    public Animator AnimatorForLockerDoor; 
+    public Animator AnimatorForCodeLock;
+    public Animator AnimatorLockerDoor; 
     public GameObject gear1, gear2, gear3, gear4;
-    [SerializeField] Quaternion gear1Rot, gear2Rot, gear3Rot, gear4Rot;
+    public Quaternion gear1Rot, gear2Rot, gear3Rot, gear4Rot;
     [SerializeField] bool puzzleSolved = false;
     private float difference = 0.1f;
     public GameObject lockObject;
@@ -64,7 +64,7 @@ public class CodeLockPuzzle : MonoBehaviour
         if (puzzleSolved == true && !puzzelSolvedsound)
         {
             audioManager.PlaySFX(audioManager.UnlockSound);
-            AnimatorForLock.SetBool("IsLocked", true);
+            AnimatorForCodeLock.SetBool("IsLocked", true);
             StartCoroutine(LockerDoorOpening());
             puzzelSolvedsound=true;
 
@@ -77,8 +77,8 @@ public class CodeLockPuzzle : MonoBehaviour
         {
             Debug.Log("Waiting 2 seconds");
             yield return new WaitForSeconds(1);
-            AnimatorForLockerDoor.SetBool("IsClosed", true);
-            lockObject.transform.parent = AnimatorForLockerDoor.transform;
+            AnimatorLockerDoor.SetBool("IsClosed", true);
+            lockObject.transform.parent = AnimatorLockerDoor.transform;
         }
     }
 }

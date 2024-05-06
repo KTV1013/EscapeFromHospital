@@ -52,4 +52,9 @@ public class EquippedItem : MonoBehaviour
 
         }
     }
+
+    public void RemoveItem()
+    {
+        equipmentSlot.RemoveItem();
+    }
 }

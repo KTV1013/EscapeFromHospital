@@ -6,8 +6,9 @@ using UnityEngine.Events;
 public class UnlockableObject : Interactable
 {
     EquippedItem equippedGetter;
-    public Item Key;
-    public UnityEvent Unlock;
+    public Item key;
+    public bool removeItem = true;
+    public UnityEvent unlock;
 
     private void Start()
     {
@@ -20,14 +21,16 @@ public class UnlockableObject : Interactable
 
     public override void StartInteraction()
     {
-        if (Key == null)
+        if (key == null)
         {
             Debug.LogError("Missing Key: " + name);
             return;
         }
-        if (equippedGetter.GetItem().Equals(Key.name)) 
+        if (equippedGetter.GetItem().Equals(key.name)) 
         {
-            Unlock.Invoke();
+            unlock.Invoke();
+            if (removeItem) 
+                equippedGetter.RemoveItem();
             Destroy(this);
         }
     }

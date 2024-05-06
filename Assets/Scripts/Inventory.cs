@@ -3,22 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditor.PackageManager;
 
 public class Inventory : MonoBehaviour
 {
-    public GameObject inventory;
-    public List<InventorySlot> inventorySlots = new List<InventorySlot>();
+    private GameObject inventory;
+    private List<InventorySlot> inventorySlots = new List<InventorySlot>();
     public EquipmentSlot equipmentSlot;
-    public TMP_Text itemName;
+    private TMP_Text itemName;
+    public InventorySlot inventorySlot;
+    public int inventorySlotIndex = 15;
 
     public float raycastDistance = 5f;
     public LayerMask itemLayer;
 
     public Image Image;
+    AudioManager audioManager;
 
     public void Start()
     {
+        addInventory();
         toggleInventory(false);
+        audioManager= GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     public void Update()
@@ -26,9 +32,7 @@ public class Inventory : MonoBehaviour
         itemRaycast(Input.GetKeyDown(KeyCode.E));
 
         if (Input.GetKeyDown(KeyCode.Tab))
-            toggleInventory(!inventory.activeInHierarchy);
-
-
+            toggleInventory(!inventory.activeInHierarchy);     
     }
 
     private void itemRaycast(bool hasClicked = false)
@@ -48,18 +52,31 @@ public class Inventory : MonoBehaviour
                     if(!equipmentSlot.CheckItem())
                     {
                         addItemToEquipment(newItem);
+                        
+                        if (hit.collider.gameObject.CompareTag("Key2"))
+                        {
+                            audioManager.PlaySFX(audioManager.KeysSound);
+                        }
                     }
                     else
                     {
                         addItemToInventory(newItem);
+                        if (hit.collider.gameObject.CompareTag("Key2"))
+                        {
+                            audioManager.PlaySFX(audioManager.KeysSound);
+                        }
+
                     } 
                 }
                 else
                 {
                     Item newItem = hit.collider.GetComponent<Item>();
-                    itemName.text = newItem?.name;
+                    itemName.text = newItem.name;
                 }
             }
+
+            
+
         }
     }
 
@@ -100,13 +117,33 @@ public class Inventory : MonoBehaviour
         Cursor.lockState = enable ? CursorLockMode.None : CursorLockMode.Locked;
         Cursor.visible = enable;
 
-        // Disable the rotation of the camera.
-        //CameraController mainCamera = GameObject.Find("Main Camera").GetComponent<CameraController>();
-        //mainCamera.CameraRotator = enable ? false : true;
-    }   
+        // Disable player movement.
+        gameObject.GetComponent<PlayerMovement>().enabled = enable ? false : true;
+        gameObject.GetComponentInChildren<MouseController>().enabled = enable ? false : true;
+    }
+
+    private void addInventory()
+    {
+        if (GameObject.Find("Inventory Canvas"))
+        {
+            inventory = GameObject.Find(gameObject.name + "/Inventory Canvas/Inventory");
+            itemName = GameObject.Find(gameObject.name + "/Inventory Canvas/ItemName").GetComponent<TextMeshProUGUI>();
+
+            GameObject slotPlace = GameObject.Find(gameObject.name + "/Inventory Canvas/Inventory/InventorySlots/Viewport/Content");
+            if (slotPlace)
+            {
+                for (int i = 0; i < inventorySlotIndex; i++)
+                {
+                    InventorySlot addInventorySlot = Instantiate(inventorySlot, slotPlace.transform);
+                    addInventorySlot.gameObject.SetActive(true);
+                    inventorySlots.Add(addInventorySlot);
+                }
+            }
+        }
+    }
 
     public List<InventorySlot> GetInventory()
-    {
+    {        
         return inventorySlots; 
     }
 }

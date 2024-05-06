@@ -432,7 +432,7 @@ GameObject:
   - component: {fileID: 8841831105115104980}
   - component: {fileID: 9073683259014135418}
   - component: {fileID: 4371021366479010337}
-  - component: {fileID: 3021834759146673534}
+  - component: {fileID: 8199042594592553869}
   m_Layer: 0
   m_Name: Single_Door
   m_TagString: Untagged
@@ -502,7 +502,7 @@ HingeJoint:
   serializedVersion: 2
   m_UseSpring: 1
   m_Spring:
-    spring: 3
+    spring: 8
     damper: 7
     targetPosition: 0
   m_UseMotor: 0
@@ -541,7 +541,7 @@ MonoBehaviour:
   Unlock:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3021834759146673534}
+      - m_Target: {fileID: 8199042594592553869}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
@@ -553,7 +553,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
---- !u!114 &3021834759146673534
+--- !u!114 &8199042594592553869
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -562,10 +562,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5884629905897958464}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b8c48f6e2fb189458d52a7b7d773ea1, type: 3}
+  m_Script: {fileID: 11500000, guid: ac5d9c923b274bf42beaad0f7e5f9b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drag: 7
+  force: 100
 --- !u!1 &7152117421995997620
 GameObject:
   m_ObjectHideFlags: 0

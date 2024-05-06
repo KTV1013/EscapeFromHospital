@@ -11,6 +11,10 @@ TagManager:
   - Gear
   - Door
   - LockerDoor
+  - Trash Can
+  - Locker
+  - Audio
+  - Key2
   layers:
   - Default
   - TransparentFX

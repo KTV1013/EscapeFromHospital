@@ -73,7 +73,7 @@ public class ItemInSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public void OnBeginDrag(PointerEventData eventData)
     {
         originalParent = transform.parent;
-        transform.SetParent(transform.root);
+        transform.SetParent(GameObject.Find("Inventory Canvas").transform);
         transform.SetAsLastSibling();
         icon.raycastTarget = false;
     }

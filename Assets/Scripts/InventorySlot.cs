@@ -13,9 +13,10 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     public void setItem(Item itemInfo)
     {
         hasItem = true;
-        Instantiate(itemIcon, gameObject.transform);
+        GameObject newItemIcon = Instantiate(itemIcon, gameObject.transform);
         slotItem = itemInfo;
-        transform.GetChild(0).GetComponent<ItemInSlot>().item = slotItem;  
+        transform.GetChild(0).GetComponent<ItemInSlot>().item = slotItem;
+        newItemIcon.SetActive(true);
     }
 
     public bool CheckItem()

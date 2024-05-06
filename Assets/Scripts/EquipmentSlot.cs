@@ -12,9 +12,10 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler
     public void setItem(Item itemInfo)
     {
         hasItem = true;
-        Instantiate(itemIcon, gameObject.transform);
+        GameObject newItemIcon = Instantiate(itemIcon, gameObject.transform);
         slotItem = itemInfo;
         gameObject.transform.GetChild(0).GetComponent<ItemInSlot>().item = slotItem;
+        newItemIcon.SetActive(true);
     }
 
     public bool CheckItem()
@@ -60,5 +61,15 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler
     {
         gameObject.transform.GetChild(0).transform.SetParent(itemToSwap.originalParent);
         slotItem = itemToSwap.item;
+    }
+
+    public void RemoveItem()
+    {
+        if (hasItem)
+        {
+            Destroy(gameObject.transform.GetChild(0).gameObject);
+            hasItem = false;
+            slotItem = null;
+        }
     }
 }

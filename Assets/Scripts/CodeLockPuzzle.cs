@@ -10,17 +10,24 @@ using UnityEngine.InputSystem;
 public class CodeLockPuzzle : MonoBehaviour
 {
     //RayCasting rayCasting;
-    public Animator AnimatorForLock;
-    public Animator AnimatorForLockerDoor; 
+    public Animator AnimatorForCodeLock;
+    public Animator AnimatorLockerDoor;
     public GameObject gear1, gear2, gear3, gear4;
-    [SerializeField] Quaternion gear1Rot, gear2Rot, gear3Rot, gear4Rot;
+    public Quaternion gear1Rot, gear2Rot, gear3Rot, gear4Rot;
     [SerializeField] bool puzzleSolved = false;
     private float difference = 0.1f;
     public GameObject lockObject;
+    bool puzzelSolvedsound = false;
+    bool puzzelsolvedsoundforNumbers = false;
+    AudioManager audioManager;
+
+
 
     void Start()
     {
         //rayCasting = GameObject.FindGameObjectWithTag("Player").GetComponent<RayCasting>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        
     }
 
     void Update()
@@ -32,10 +39,10 @@ public class CodeLockPuzzle : MonoBehaviour
 
     void CodeCheck()
     {
-        //if ((Quaternion.Angle(gear1.transform.rotation, gear1Rot) < difference)) { Debug.Log("Gear1 done"); }
-        //if ((Quaternion.Angle(gear2.transform.rotation, gear2Rot) < difference)) { Debug.Log("Gear2 done"); }
-        //if ((Quaternion.Angle(gear3.transform.rotation, gear3Rot) < difference)) { Debug.Log("Gear3 done"); }
-        //if ((Quaternion.Angle(gear4.transform.rotation, gear4Rot) < difference)) { Debug.Log("Gear4 done"); }
+        if ((Quaternion.Angle(gear1.transform.rotation, gear1Rot) < difference)) { Debug.Log("Gear1 done"); }
+        if ((Quaternion.Angle(gear2.transform.rotation, gear2Rot) < difference)) { Debug.Log("Gear2 done"); }
+        if ((Quaternion.Angle(gear3.transform.rotation, gear3Rot) < difference)) { Debug.Log("Gear3 done"); }
+        if ((Quaternion.Angle(gear4.transform.rotation, gear4Rot) < difference)) { Debug.Log("Gear4 done"); }
 
         if (Quaternion.Angle(gear1.transform.rotation, gear1Rot) < difference &&
             Quaternion.Angle(gear2.transform.rotation, gear2Rot) < difference &&
@@ -55,22 +62,42 @@ public class CodeLockPuzzle : MonoBehaviour
 
     private void LockOpening()
     {
-        if (puzzleSolved == true)
+        if (puzzleSolved == true && !puzzelSolvedsound)
         {
-            AnimatorForLock.SetBool("IsLocked", true);
+            audioManager.PlaySFX(audioManager.UnlockSoundForLockWithCode);
+            AnimatorForCodeLock.SetBool("IsLocked", true);
             StartCoroutine(LockerDoorOpening());
+            puzzelSolvedsound=true;
 
         }
+
+        if (puzzleSolved == true && !puzzelsolvedsoundforNumbers)
+        {
+            audioManager.PlaySFX(audioManager.UnlockSoundForLockWithNumbers);
+            AnimatorForCodeLock.SetBool("RightNumbers", true);
+            StartCoroutine(LockerDoorOpening());
+            puzzelsolvedsoundforNumbers = true;
+
+        }
+
     }
 
     private IEnumerator LockerDoorOpening()
     {
         if (puzzleSolved == true)
         {
-            Debug.Log("Waiting 2 seconds");
+            Debug.Log("Waiting 1 seconds");
             yield return new WaitForSeconds(1);
-            AnimatorForLockerDoor.SetBool("IsClosed", true);
-            lockObject.transform.parent = AnimatorForLockerDoor.transform;
+            AnimatorLockerDoor.SetBool("IsClosed", true);
+            lockObject.transform.parent = AnimatorLockerDoor.transform;
+        }
+
+        if (puzzleSolved == true)
+        {
+            Debug.Log("Waiting 1 seconds");
+            yield return new WaitForSeconds(1);
+            AnimatorLockerDoor.SetBool("AIDClosed", true);
+            lockObject.transform.parent = AnimatorLockerDoor.transform;
         }
     }
 }

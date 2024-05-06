@@ -10,23 +10,24 @@ public class Timer : MonoBehaviour
 
     [SerializeField] int minutes;
     [SerializeField] int seconds;
-    //[SerializeField] TextMeshProUGUI timerText;
+    public TextMeshProUGUI timerText;
+    AudioManager audioManager;
+    bool halvTimeAlarmPlayed = false;
 
-    [ContextMenu("Start Timer")]
-    //[SerializeField] TextMeshProUGUI timerText;
 
     private void Awake()
     {
         timeLeft = time;
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
     private void Update()
     {
         minutes = Mathf.FloorToInt(timeLeft / 60);
         seconds = Mathf.FloorToInt(timeLeft % 60);
-
+        
         startTimer();
         HalvTimeCheck();
-        LastMinuteCheck(minutes,seconds);
+        LastMinuteCheck(minutes, seconds);        
     }
 
     public float GetTime() {  return timeLeft; }
@@ -41,16 +42,18 @@ public class Timer : MonoBehaviour
             timeLeft = 0;
         }
 
-        //timerText.text = string.Format("{0:00}:{1:00}",minutes,seconds);
+        timerText.text = string.Format("{0:00}:{1:00}",minutes,seconds);
     }
 
     private void HalvTimeCheck()
     {
-        
-        if (timeLeft <= time/2)
+
+        if (timeLeft <= time / 2 && !halvTimeAlarmPlayed) 
         {
-            //timerText.color = Color.red;
-            Debug.Log("Halv time is gone");
+            audioManager.PlaySFX(audioManager.Alarmsound);
+            Debug.Log("Alarm on Alarm on ");
+            timerText.color = Color.red;
+            halvTimeAlarmPlayed = true;
         }
     }
     private void LastMinuteCheck(int min, int sec)
@@ -58,7 +61,7 @@ public class Timer : MonoBehaviour
       
         if (min == 1 & sec == 0)
         {
-            Debug.Log("One Minute Left");
+            //Debug.Log("One Minute Left");
         }
     }
 

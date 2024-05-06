@@ -10,9 +10,12 @@ public class DesplayItem : MonoBehaviour
     public string itemNmae;
     float speed = 500;
     public bool canRotate = false;
+    public GameObject cameraFieldOfView;
+    float fieldOfView = 60;
 
     private void Update()
     {
+
         if (item != null)
         {
             item.transform.position = gameObject.transform.position;
@@ -26,6 +29,15 @@ public class DesplayItem : MonoBehaviour
             itemOnView.transform.Rotate(Vector3.up, -MouseXAxis, Space.World);
             itemOnView.transform.Rotate(Vector3.right, MouseYAxis, Space.World);
         }
+
+        if(canRotate)
+        {
+            cameraFieldOfView.GetComponent<Camera>().fieldOfView = fieldOfView;
+            fieldOfView += Input.mouseScrollDelta.y * 2;
+            if (Input.GetKeyDown(KeyCode.Tab))
+                fieldOfView = 60;
+        }
+
         if (Input.GetKeyDown(KeyCode.Tab) && item != null)
         {
             Destroy(item);

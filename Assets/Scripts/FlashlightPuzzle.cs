@@ -14,12 +14,16 @@ public class FlashlightPuzzle : MonoBehaviour
 
     [SerializeField] bool on = false;
     [SerializeField] bool off = true;
+
+    AudioManager audioManager;
     
     void Start()
     {
        player = GameObject.FindGameObjectWithTag("Player");
-       slots = player.GetComponent<Inventory>().GetInventory();
-       equippedItem = player.GetComponent<EquippedItem>();
+        slots = player.GetComponent<Inventory>().GetInventory();
+        equippedItem = player.GetComponent<EquippedItem>();
+
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     
@@ -29,7 +33,6 @@ public class FlashlightPuzzle : MonoBehaviour
         FlashlightCheck();
         if (hasBattery && hasFlashlight)
         {
-            //TurnOn();
             if (off && Input.GetKeyDown(KeyCode.F))
             {
                 Debug.Log("Light trun on");
@@ -55,6 +58,7 @@ public class FlashlightPuzzle : MonoBehaviour
                 if (childName == "Battery")
                 {
                     hasBattery = true;
+                    return;
                 }
             }
 
@@ -65,21 +69,29 @@ public class FlashlightPuzzle : MonoBehaviour
     {
         if (equippedItem.name != null)
         {
-            if (equippedItem.GetItem() == "flashlight")
+            if (equippedItem.GetItem() == "Flashlight")
             {
                 hasFlashlight = true;
+            }
+            else
+            {
+                hasFlashlight = false;
             }
         }
     }
 
     private void TurnOn()
     {
+        Debug.Log("ON");
+        audioManager.PlaySFX(audioManager.switchingsound);
         spotLight.enabled = true;
         off = false;
         on = true;
     }
     private void TurnOff()
     {
+        Debug.Log("OFF");
+        audioManager.PlaySFX(audioManager.switchingsound);
         spotLight.enabled=false;
         off = true;
         on = false;

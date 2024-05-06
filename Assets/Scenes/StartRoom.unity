@@ -1466,6 +1466,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 41558659445321569, guid: 54826e89829d5ce468f74f9d90940c37, type: 3}
+      propertyPath: m_TagString
+      value: Key2
+      objectReference: {fileID: 0}
     - target: {fileID: 2424842783618048012, guid: 54826e89829d5ce468f74f9d90940c37, type: 3}
       propertyPath: spotLight
       value: 

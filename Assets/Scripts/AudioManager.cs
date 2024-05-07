@@ -13,11 +13,11 @@ public class AudioManager : MonoBehaviour
     public AudioClip BackgroundMusic;
     public AudioClip KeysSound;
     public AudioClip Alarmsound;
-    public AudioClip UnlockSoundForLockWithCode;
+    public AudioClip UnlockSoundForCode;
     public AudioClip Lockedsound;
     public AudioClip GearSound;
     public AudioClip switchingsound;
-    public AudioClip UnlockSoundForLockWithNumbers; 
+    public AudioClip UnlockSoundForNumbers; 
     //public AudioClip GameroverClip; "Game over music clip "
 
     private void Start()

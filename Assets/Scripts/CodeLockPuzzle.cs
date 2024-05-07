@@ -64,7 +64,7 @@ public class CodeLockPuzzle : MonoBehaviour
     {
         if (puzzleSolved == true && !puzzelSolvedsound)
         {
-            audioManager.PlaySFX(audioManager.UnlockSoundForLockWithCode);
+            audioManager.PlaySFX(audioManager.UnlockSoundForCode);
             AnimatorForCodeLock.SetBool("IsLocked", true);
             StartCoroutine(LockerDoorOpening());
             puzzelSolvedsound=true;
@@ -73,7 +73,7 @@ public class CodeLockPuzzle : MonoBehaviour
 
         if (puzzleSolved == true && !puzzelsolvedsoundforNumbers)
         {
-            audioManager.PlaySFX(audioManager.UnlockSoundForLockWithNumbers);
+            audioManager.PlaySFX(audioManager.UnlockSoundForNumbers);
             AnimatorForCodeLock.SetBool("RightNumbers", true);
             StartCoroutine(LockerDoorOpening());
             puzzelsolvedsoundforNumbers = true;

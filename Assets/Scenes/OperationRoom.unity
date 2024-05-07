@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &306526754 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5688478901101906444, guid: e2405105dd2a4ee479f1a5bf9f606762, type: 3}
+  m_PrefabInstance: {fileID: 1067812551000400233}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &1227642557 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 1788856065797063874, guid: e2405105dd2a4ee479f1a5bf9f606762, type: 3}
@@ -374,6 +379,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3491717030880183725, guid: 27fd78e2190b7e44f87c6537751c584f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4220322844790925250, guid: 27fd78e2190b7e44f87c6537751c584f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -423,6 +432,42 @@ PrefabInstance:
       propertyPath: key
       value: 
       objectReference: {fileID: 1959966948}
+    - target: {fileID: 3449241292922766375, guid: e2405105dd2a4ee479f1a5bf9f606762, type: 3}
+      propertyPath: unlock.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3449241292922766375, guid: e2405105dd2a4ee479f1a5bf9f606762, type: 3}
+      propertyPath: unlock.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3449241292922766375, guid: e2405105dd2a4ee479f1a5bf9f606762, type: 3}
+      propertyPath: unlock.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 306526754}
+    - target: {fileID: 3449241292922766375, guid: e2405105dd2a4ee479f1a5bf9f606762, type: 3}
+      propertyPath: unlock.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3449241292922766375, guid: e2405105dd2a4ee479f1a5bf9f606762, type: 3}
+      propertyPath: unlock.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3449241292922766375, guid: e2405105dd2a4ee479f1a5bf9f606762, type: 3}
+      propertyPath: unlock.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3449241292922766375, guid: e2405105dd2a4ee479f1a5bf9f606762, type: 3}
+      propertyPath: unlock.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3449241292922766375, guid: e2405105dd2a4ee479f1a5bf9f606762, type: 3}
+      propertyPath: unlock.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3449241292922766375, guid: e2405105dd2a4ee479f1a5bf9f606762, type: 3}
+      propertyPath: unlock.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4714242350551349996, guid: e2405105dd2a4ee479f1a5bf9f606762, type: 3}
       propertyPath: icon
       value: 
@@ -470,6 +515,22 @@ PrefabInstance:
     - target: {fileID: 5479915332860003555, guid: e2405105dd2a4ee479f1a5bf9f606762, type: 3}
       propertyPath: m_Name
       value: Operation_Room
+      objectReference: {fileID: 0}
+    - target: {fileID: 7053742943525941000, guid: e2405105dd2a4ee479f1a5bf9f606762, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7685460354804512178, guid: e2405105dd2a4ee479f1a5bf9f606762, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -17.387
+      objectReference: {fileID: 0}
+    - target: {fileID: 7685460354804512178, guid: e2405105dd2a4ee479f1a5bf9f606762, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 55.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 9097544581132613422, guid: e2405105dd2a4ee479f1a5bf9f606762, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

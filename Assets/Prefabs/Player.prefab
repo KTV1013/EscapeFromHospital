@@ -704,7 +704,7 @@ MonoBehaviour:
   itemOnView: {fileID: 0}
   itemNmae: 
   canRotate: 0
-  cameraFieldOfView: {fileID: 0}
+  cameraFieldOfView: {fileID: 9126418099983964925}
 --- !u!1 &3491717030880183725
 GameObject:
   m_ObjectHideFlags: 0

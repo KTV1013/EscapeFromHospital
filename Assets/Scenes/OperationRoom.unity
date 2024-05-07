@@ -426,7 +426,7 @@ PrefabInstance:
     - target: {fileID: 4714242350551349996, guid: e2405105dd2a4ee479f1a5bf9f606762, type: 3}
       propertyPath: icon
       value: 
-      objectReference: {fileID: 21300000, guid: b0362d1f718e0cd408925c0585143a8a, type: 3}
+      objectReference: {fileID: 21300000, guid: 7f4393f0258b77b40a292b85d4727a83, type: 3}
     - target: {fileID: 5136145757071875673, guid: e2405105dd2a4ee479f1a5bf9f606762, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -471,13 +471,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Operation_Room
       objectReference: {fileID: 0}
-    - target: {fileID: 7053742943525941000, guid: e2405105dd2a4ee479f1a5bf9f606762, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 8571636395838439982, guid: e2405105dd2a4ee479f1a5bf9f606762, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2405105dd2a4ee479f1a5bf9f606762, type: 3}

@@ -209,7 +209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Key
-  icon: {fileID: 21300000, guid: b0362d1f718e0cd408925c0585143a8a, type: 3}
+  icon: {fileID: 21300000, guid: 7f4393f0258b77b40a292b85d4727a83, type: 3}
 --- !u!65 &1853475513206289407
 BoxCollider:
   m_ObjectHideFlags: 0

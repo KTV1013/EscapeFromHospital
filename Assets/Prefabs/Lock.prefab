@@ -52,6 +52,22 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a79beef49f65d264488a38ce0ef05e33, type: 2}
+    - target: {fileID: -2514230138674919691, guid: 1c595fff21dff7741a9c41d1f267037f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 43.26842
+      objectReference: {fileID: 0}
+    - target: {fileID: -2514230138674919691, guid: 1c595fff21dff7741a9c41d1f267037f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -427.0511
+      objectReference: {fileID: 0}
+    - target: {fileID: -2514230138674919691, guid: 1c595fff21dff7741a9c41d1f267037f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.177
+      objectReference: {fileID: 0}
+    - target: {fileID: -286713935174758890, guid: 1c595fff21dff7741a9c41d1f267037f, type: 3}
+      propertyPath: m_Name
+      value: 'Shank '
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1c595fff21dff7741a9c41d1f267037f, type: 3}
       propertyPath: m_Name
       value: Lock
@@ -67,6 +83,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -286713935174758890, guid: 1c595fff21dff7741a9c41d1f267037f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7127548225357492171}
+    - targetCorrespondingSourceObject: {fileID: -286713935174758890, guid: 1c595fff21dff7741a9c41d1f267037f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8508702830316895086}
     - targetCorrespondingSourceObject: {fileID: 1963035160312945046, guid: 1c595fff21dff7741a9c41d1f267037f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2701102469378691}
@@ -97,6 +116,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.7328987, y: 0.12390137, z: 0.8804743}
   m_Center: {x: -43.257423, y: 427.05112, z: 1.7375487}
+--- !u!95 &8508702830316895086
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4055066709932239705}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8b8cc4c59234d794ba52317e3eec5812, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6880660831538445529 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1963035160312945046, guid: 1c595fff21dff7741a9c41d1f267037f, type: 3}

@@ -26,8 +26,10 @@ public class UnlockableObject : Interactable
             Debug.LogError("Missing Key: " + name);
             return;
         }
+        Debug.Log(equippedGetter.GetItem());
         if (equippedGetter.GetItem().Equals(key.name)) 
         {
+
             unlock.Invoke();
             if (removeItem) 
                 equippedGetter.RemoveItem();

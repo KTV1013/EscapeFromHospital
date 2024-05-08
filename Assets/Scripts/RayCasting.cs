@@ -22,7 +22,7 @@ public class RayCasting : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetMouseButton(0))
         {
             ShootRay();
         }

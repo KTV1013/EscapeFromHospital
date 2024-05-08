@@ -10,6 +10,7 @@ public class FlashlightPuzzle : MonoBehaviour
 
     [SerializeField] bool hasBattery = false;
     [SerializeField] bool hasFlashlight = false;
+    [SerializeField] bool puzzleSolved = false;
     public Light spotLight;
 
     [SerializeField] bool on = false;
@@ -33,18 +34,26 @@ public class FlashlightPuzzle : MonoBehaviour
         FlashlightCheck();
         if (hasBattery && hasFlashlight)
         {
-            if (off && Input.GetKeyDown(KeyCode.F))
+            puzzleSolved = true;
+            //if (off && Input.GetKeyDown(KeyCode.F))
+            //{
+            //    Debug.Log("Light trun on");
+            //    TurnOn();
+            //}
+            //else if (on && Input.GetKeyDown(KeyCode.F))
+            //{
+            //    Debug.Log("Light off");
+            //    TurnOff();
+            //}
+        }
+        if (puzzleSolved)
+        {
+            if (Input.GetKeyUp(KeyCode.F))
             {
-                Debug.Log("Light trun on");
+                on = !on;
                 TurnOn();
             }
-            else if (on && Input.GetKeyDown(KeyCode.F))
-            {
-                Debug.Log("Light off");
-                TurnOff();
-            }
         }
-
     }
 
     private void BatteryCheck()
@@ -66,27 +75,32 @@ public class FlashlightPuzzle : MonoBehaviour
     }
 
     private void FlashlightCheck()
-    {
-        if (equippedItem.name != null)
+    {        
+        if (equippedItem.GetItem() == "Flashlight")
         {
-            if (equippedItem.GetItem() == "Flashlight")
-            {
                 hasFlashlight = true;
-            }
-            else
-            {
+        }
+        else
+        {
                 hasFlashlight = false;
-            }
         }
     }
 
     private void TurnOn()
     {
-        Debug.Log("ON");
-        audioManager.PlaySFX(audioManager.switchingsound);
-        spotLight.enabled = true;
-        off = false;
-        on = true;
+        if (on)
+        {
+            spotLight.enabled = true;
+        }
+        else if (!on)
+        {
+            spotLight.enabled = false;
+        }
+        //Debug.Log("ON");
+        //audioManager.PlaySFX(audioManager.switchingsound);
+        //spotLight.enabled = true;
+        //off = false;
+        //on = true;
     }
     private void TurnOff()
     {

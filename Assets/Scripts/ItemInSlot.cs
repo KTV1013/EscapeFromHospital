@@ -60,12 +60,20 @@ public class ItemInSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             if (desplayItem.item != null && desplayItem.itemOnView == null)
             {
                 desplayItem.itemOnView = Instantiate(desplayItem.item);
+                if (desplayItem.itemOnView.GetComponent<Rigidbody>())
+                {
+                    desplayItem.itemOnView.GetComponent<Rigidbody>().isKinematic = true;
+                }
             }
 
             else if (desplayItem.item != null && desplayItem.itemOnView != null)
             {
                 Destroy(desplayItem.itemOnView);
                 desplayItem.itemOnView = Instantiate(desplayItem.item);
+                if (desplayItem.itemOnView.GetComponent<Rigidbody>())
+                {
+                    desplayItem.itemOnView.GetComponent<Rigidbody>().isKinematic = true;
+                }
             }
         }
     }

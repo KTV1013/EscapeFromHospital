@@ -8,18 +8,41 @@ public class XRayScreenImage : MonoBehaviour
     public Material screenOn;
     public Material hand;
     public Material handWithKey;
+    public Renderer render;
 
     void Start()
     {
-        gameObject.GetComponent<Renderer>().material = screenOff;
+        render = gameObject.GetComponent<Renderer>();
+        render.material = screenOff;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            gameObject.GetComponent<Renderer>().material = screenOn;
+            render.material = screenOn;
+        }
+    }
+
+    public void ActivateXRayMachine()
+    {
+        render.material = screenOn;
+    }
+
+    public void GetManiuMaterial()
+    {
+        render.material = screenOn;
+    }
+
+    public void SetImage(GameObject item)
+    {
+        if (item.GetComponent<HasKey>())
+        {
+            render.material = handWithKey;
+        }
+        else
+        {
+            render.material = hand;
         }
     }
 }

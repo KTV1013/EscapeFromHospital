@@ -7,7 +7,6 @@ using UnityEngine;
 public class AnimatorExtension : MonoBehaviour
 {
     Animator animator_;
-    // Start is called before the first frame update
     void Awake()
     {
         animator_ = GetComponent<Animator>();

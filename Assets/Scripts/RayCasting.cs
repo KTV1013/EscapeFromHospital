@@ -5,7 +5,6 @@ using UnityEngine;
 public class RayCasting : MonoBehaviour
 {
     Ray ray;
-    Ray camRay;
     float maxDistance = 5f;
     EquippedItem equippedItem;
     public Animator TrashCanAnimation;

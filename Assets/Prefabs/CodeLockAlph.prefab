@@ -115,6 +115,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b7e73c4b2f04fbc428eb6c2480333d4e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1485936636888883635}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b7e73c4b2f04fbc428eb6c2480333d4e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2920686752998468273}
     - targetCorrespondingSourceObject: {fileID: 3706628899711725511, guid: b7e73c4b2f04fbc428eb6c2480333d4e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7759630047692711339}
@@ -197,8 +200,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6efbf650749a98648814f9ebdec6689d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AnimatorForLock: {fileID: 0}
-  AnimatorForLockerDoor: {fileID: 0}
+  AnimatorForCodeLock: {fileID: 0}
+  AnimatorLockerDoor: {fileID: 0}
   gear1: {fileID: 4453407402778489934}
   gear2: {fileID: 7377851520690581251}
   gear3: {fileID: 2492468244729612230}
@@ -207,8 +210,22 @@ MonoBehaviour:
   gear2Rot: {x: 0, y: 0, z: 0, w: 0}
   gear3Rot: {x: 0, y: 0, z: 0, w: 0}
   gear4Rot: {x: 0, y: 0, z: 0, w: 0}
-  lockObject: {fileID: 5318191521324326110}
   puzzleSolved: 0
+  lockObject: {fileID: 5318191521324326110}
+--- !u!114 &2920686752998468273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3047641283165724131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0058b35cfa7bb843bed0b26afc19dce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 5
+  outlinerMaterial: {fileID: 2100000, guid: 14104664cc64cd448b2f948601ef2954, type: 2}
 --- !u!1 &4453407402778489934 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7257653911013468932, guid: b7e73c4b2f04fbc428eb6c2480333d4e, type: 3}

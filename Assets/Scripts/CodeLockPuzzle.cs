@@ -37,7 +37,7 @@ public class CodeLockPuzzle : MonoBehaviour
         LockerDoorOpening();
     }
 
-    void CodeCheck()
+    public void CodeCheck()
     {
         if ((Quaternion.Angle(gear1.transform.rotation, gear1Rot) < difference)) { Debug.Log("Gear1 done"); }
         if ((Quaternion.Angle(gear2.transform.rotation, gear2Rot) < difference)) { Debug.Log("Gear2 done"); }

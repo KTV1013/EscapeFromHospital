@@ -36,8 +36,6 @@ public class ObjectHighlighter : MonoBehaviour
 
             if (hit.collider.gameObject == gameObject)
             {
-                Debug.Log("Object"+gameObject);
-                Debug.Log("hit object:" + hit.collider.gameObject);
                 // If not already highlighted, highlight the object
                 if (!isHighlighted)
                 {

@@ -11,19 +11,20 @@ public class Gear : Interactable
     }
     public override void EndInteraction()
     {
-        
+
     }
 
     public override void StartInteraction()
     {
         RotateGear();
+        Debug.Log("Interaction Started");
     }
 
     // Funktion för att rotarea på Gear 
-    private void RotateGear()
+    public void RotateGear()
     {
         transform.Rotate(new Vector3(-36f, 0f, 0f));
         audioManager.PlaySFX(audioManager.GearSound);
-        Debug.Log("Roterad");
+        Debug.Log("Gear Roterad");
     }
 }

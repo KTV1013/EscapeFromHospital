@@ -9653,7 +9653,6 @@ GameObject:
   - component: {fileID: 8760561578941485745}
   - component: {fileID: 5479871522181411931}
   - component: {fileID: 1558635600161667444}
-  - component: {fileID: 2616271100383443206}
   m_Layer: 0
   m_Name: CodeLockAlph
   m_TagString: Untagged
@@ -9722,27 +9721,6 @@ MonoBehaviour:
   objectRenderer: {fileID: 782676781047666073}
   outlinerMaterial: {fileID: 2100000, guid: 14104664cc64cd448b2f948601ef2954, type: 2}
   isHighlighted: 0
---- !u!65 &2616271100383443206
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8275387386432473099}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.29260537, y: 0.2536351, z: 0.054794807}
-  m_Center: {x: 0.0045879865, y: 0.12577954, z: 0.0037255494}
 --- !u!1 &8302266183072038178
 GameObject:
   m_ObjectHideFlags: 0

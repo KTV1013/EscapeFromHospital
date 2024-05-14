@@ -267,6 +267,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Operation_Room
       objectReference: {fileID: 0}
+    - target: {fileID: 6452220002775184561, guid: e2405105dd2a4ee479f1a5bf9f606762, type: 3}
+      propertyPath: time
+      value: 900
+      objectReference: {fileID: 0}
     - target: {fileID: 7053742943525941000, guid: e2405105dd2a4ee479f1a5bf9f606762, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -280,7 +284,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 486635593790165651, guid: e2405105dd2a4ee479f1a5bf9f606762, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1235022903}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8677760847005793265, guid: e2405105dd2a4ee479f1a5bf9f606762, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: e2405105dd2a4ee479f1a5bf9f606762, type: 3}
 --- !u!1001 &266511108
 PrefabInstance:

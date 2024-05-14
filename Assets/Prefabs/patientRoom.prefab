@@ -929,6 +929,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasBattery: 0
   hasFlashlight: 0
+  puzzleSolved: 0
   spotLight: {fileID: 0}
   on: 0
   off: 1
@@ -5123,6 +5124,7 @@ GameObject:
   - component: {fileID: 8000068581093518345}
   - component: {fileID: 1723312059283066415}
   - component: {fileID: 8738119900300662865}
+  - component: {fileID: 841081526319931813}
   m_Layer: 0
   m_Name: Gear2
   m_TagString: Gear
@@ -5216,6 +5218,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.030000202, y: 0.09130144, z: 0.0957651}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &841081526319931813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4535148723682982635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7d3a9166e4a22c47980c94b4414480d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4623097118455056593
 GameObject:
   m_ObjectHideFlags: 0
@@ -5684,6 +5698,7 @@ GameObject:
   - component: {fileID: 5919614912291569688}
   - component: {fileID: 1261655132840344716}
   - component: {fileID: 3692053430954438723}
+  - component: {fileID: 2041829418328037304}
   m_Layer: 0
   m_Name: Gear4
   m_TagString: Gear
@@ -5777,6 +5792,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.0300002, y: 0.09130144, z: 0.0957651}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2041829418328037304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5578247392286792349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7d3a9166e4a22c47980c94b4414480d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5588214638492222122
 GameObject:
   m_ObjectHideFlags: 0
@@ -7842,6 +7869,7 @@ GameObject:
   - component: {fileID: 6758931985587062932}
   - component: {fileID: 5929961935815661447}
   - component: {fileID: 8811914811228105607}
+  - component: {fileID: 5296563236215738486}
   m_Layer: 0
   m_Name: Gear1
   m_TagString: Gear
@@ -7935,6 +7963,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.030000204, y: 0.09130144, z: 0.0957651}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5296563236215738486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7304520914921726374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7d3a9166e4a22c47980c94b4414480d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7324277089966436086
 GameObject:
   m_ObjectHideFlags: 0
@@ -7946,7 +7986,8 @@ GameObject:
   - component: {fileID: 8508343925319704587}
   - component: {fileID: 7168005933635025106}
   - component: {fileID: 3314588182277914504}
-  - component: {fileID: 7961945637914172381}
+  - component: {fileID: 6932837815617319125}
+  - component: {fileID: 2590389005570605672}
   m_Layer: 0
   m_Name: body
   m_TagString: Untagged
@@ -8019,7 +8060,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7961945637914172381
+--- !u!65 &6932837815617319125
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8038,8 +8079,29 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 44.50003, y: 175.7727, z: 40.000023}
-  m_Center: {x: 0, y: 87.9666, z: 0.0000047683716}
+  m_Size: {x: 5.073631, y: 175.77269, z: 40.000023}
+  m_Center: {x: -19.71318, y: 87.9666, z: 0.0000044703484}
+--- !u!65 &2590389005570605672
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7324277089966436086}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.63155, y: 175.77269, z: 40.000023}
+  m_Center: {x: 20.434216, y: 87.9666, z: 0.0000044703484}
 --- !u!1 &7332636539577370829
 GameObject:
   m_ObjectHideFlags: 0
@@ -10079,6 +10141,7 @@ GameObject:
   - component: {fileID: 5366010773183622455}
   - component: {fileID: 5229554257606701991}
   - component: {fileID: 8581094445620194100}
+  - component: {fileID: 2874671847621345872}
   m_Layer: 0
   m_Name: Gear3
   m_TagString: Gear
@@ -10172,6 +10235,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.0300002, y: 0.09130144, z: 0.0957651}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2874671847621345872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8792284088643490350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7d3a9166e4a22c47980c94b4414480d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8821723335349603273
 GameObject:
   m_ObjectHideFlags: 0

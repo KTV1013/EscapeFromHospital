@@ -19,7 +19,7 @@ public class Gear : Interactable
         RotateGear();
     }
 
-    // Funktion för att rotarea Gear när man träffar den med en ray
+    // Funktion för att rotarea på Gear 
     private void RotateGear()
     {
         transform.Rotate(new Vector3(-36f, 0f, 0f));

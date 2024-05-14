@@ -37,7 +37,7 @@ public class RayCasting : MonoBehaviour
             //{
             //    hitInfo.collider.gameObject.transform.Rotate(new Vector3(36f, 0f, 0f));
             //}
-            RotateGear(hitInfo.collider.gameObject, hitInfo.collider.CompareTag("Gear"));
+            //RotateGear(hitInfo.collider.gameObject, hitInfo.collider.CompareTag("Gear"));
             OpenRoomDoor(hitInfo.collider.CompareTag("Door"), equippedItem.GetItem());
 
             PlayAnimation(hitInfo.collider.gameObject.CompareTag("Trash Can"), "isOpen", opend, TrashCanAnimation);

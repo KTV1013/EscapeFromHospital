@@ -5,9 +5,6 @@ using UnityEngine;
 public class Button : MonoBehaviour
 {
     public int num;
-
-    [ContextMenu("Press")]
-
     public string GetNum()
     {
         Debug.Log(num.ToString());

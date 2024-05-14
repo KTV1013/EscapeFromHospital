@@ -11,16 +11,20 @@ public class WinningMenu : MonoBehaviour
     private void Awake()
     {
         winningCanvas.enabled = false;
-        pinCode = GetComponent<PinCode>();
+        pinCode = GameObject.FindGameObjectWithTag("Code Panel").GetComponent<PinCode>();
     }
 
     private void Update()
     {
-        if (pinCode.GetNewPinCode() == pinCode.GetPinCode())
+        if (pinCode.GetPlayerInput() == pinCode.GetPinCode())
         {
+            Time.timeScale = 0f;
             winningCanvas.enabled = true;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined; 
+
         }
-       
+
     }
     public void OpenScene(int sceneNr)
     {

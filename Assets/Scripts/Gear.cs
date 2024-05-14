@@ -17,7 +17,6 @@ public class Gear : Interactable
     public override void StartInteraction()
     {
         RotateGear();
-        Debug.Log("Interaction Started");
     }
 
     // Funktion för att rotarea på Gear 

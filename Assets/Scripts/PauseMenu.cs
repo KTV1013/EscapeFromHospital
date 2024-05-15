@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public Canvas pauseCanvas;
+    public Canvas winningCanvas;
     public float timeLeft { get; set; }
 
     [SerializeField] bool GameIsPaused = false;
@@ -20,7 +21,11 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
         {
-            pauseTheGame();
+            if (!winningCanvas.enabled)
+            {
+                pauseTheGame();
+            }
+            
         }
         
     }

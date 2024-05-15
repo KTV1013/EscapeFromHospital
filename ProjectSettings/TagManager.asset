@@ -18,6 +18,7 @@ TagManager:
   - Paper
   - Code Panel
   - Delete Button
+  - Timer
   layers:
   - Default
   - TransparentFX

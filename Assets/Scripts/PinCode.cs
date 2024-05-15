@@ -6,7 +6,6 @@ using UnityEngine;
 public class PinCode : MonoBehaviour
 {
     public string pinCode = "1234";
-    public Canvas winningCanvas;
     [SerializeField] string playerInput;
     public TextMeshProUGUI pinCodetxt;
 
@@ -19,12 +18,7 @@ public class PinCode : MonoBehaviour
         {
             ShootRay();
         }
-        if (playerInput == pinCode)
-        {
-            Debug.Log("You Escaped");
-        }
         pinCodetxt.text = playerInput;
-
     }
 
     

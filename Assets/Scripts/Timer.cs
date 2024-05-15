@@ -30,7 +30,7 @@ public class Timer : MonoBehaviour
         LastMinuteCheck(minutes, seconds);   
     }
 
-    public float GetTime() {  return timeLeft; }
+    public float GetTime() {  return time; }
     public float GetTimeLeft() { return timeLeft; }
     public void startTimer()
     {

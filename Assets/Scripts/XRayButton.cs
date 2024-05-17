@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Device;
 
 public class XRayButton : MonoBehaviour
 {
     public Animator pressButton;
     float raycastDistance = 5f;
+    public GameObject itemPlace;
 
     void Update()
     {
@@ -17,6 +19,10 @@ public class XRayButton : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 pressButton.SetTrigger("PressButton");
+                if (itemPlace.transform.childCount > 0)
+                {
+                    itemPlace.GetComponent<XRayScan>().MoveOut();
+                }
             }
         }
     }

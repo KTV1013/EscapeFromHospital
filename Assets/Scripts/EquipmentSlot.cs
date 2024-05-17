@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class EquipmentSlot : MonoBehaviour, IDropHandler
 {
     public GameObject itemIcon;
-    bool hasItem = false;
+    public bool hasItem = false;
     public Item slotItem;
 
     public void setItem(Item itemInfo)
@@ -23,11 +23,12 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler
         if (transform.childCount > 0)
         {
             hasItem = true;
-
+            slotItem = gameObject.transform.GetChild(0).GetComponent<ItemInSlot>().item;
         }
         else
         {
             hasItem = false;
+            slotItem = null;
         }
 
         return hasItem;
@@ -53,6 +54,8 @@ public class EquipmentSlot : MonoBehaviour, IDropHandler
             else
             {
                 item.originalParent = transform;
+                slotItem = item.item;
+                hasItem = true;
             }
         }
     }

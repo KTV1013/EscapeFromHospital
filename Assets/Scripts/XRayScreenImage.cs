@@ -9,19 +9,12 @@ public class XRayScreenImage : MonoBehaviour
     public Material hand;
     public Material handWithKey;
     public Renderer render;
+    public Sprite handWithKeyIcon;
 
     void Start()
     {
         render = gameObject.GetComponent<Renderer>();
         render.material = screenOff;
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            render.material = screenOn;
-        }
     }
 
     public void ActivateXRayMachine()
@@ -39,6 +32,7 @@ public class XRayScreenImage : MonoBehaviour
         if (item.GetComponent<HasKey>())
         {
             render.material = handWithKey;
+            item.GetComponent<Item>().icon = handWithKeyIcon;
         }
         else
         {

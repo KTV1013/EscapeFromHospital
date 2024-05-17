@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 public class WinningMenu : MonoBehaviour
 {
     public Canvas winningCanvas;
+    public Canvas inventoryCanvas;
     public TextMeshProUGUI playerTimeTxt;
     float playerTime;
     Timer time;
@@ -23,11 +25,8 @@ public class WinningMenu : MonoBehaviour
     {
         if (pinCode.GetPlayerInput() == pinCode.GetPinCode())
         {
-            Time.timeScale = 0f;
-            winningCanvas.enabled = true;
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.Confined;            
-            CalculatePlayerTime();
+           ShowWinningCanvas();
+           CalculatePlayerTime();
         }
     }
     public void OpenScene(int sceneNr)
@@ -47,6 +46,15 @@ public class WinningMenu : MonoBehaviour
         min = Mathf.FloorToInt(playerTime / 60);
         sec = Mathf.FloorToInt(playerTime % 60);
         playerTimeTxt.text = "You escaped in " + min + " minutes and " + sec + " seconds" ;
+    }
+
+    private void ShowWinningCanvas()
+    {
+        Time.timeScale = 0f;
+        winningCanvas.enabled = true;
+        inventoryCanvas.enabled = false;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
 }

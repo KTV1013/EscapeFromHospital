@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
 {
     public Canvas pauseCanvas;
     public Canvas winningCanvas;
+    public Canvas inventoryCanvas;
     public float timeLeft { get; set; }
 
     [SerializeField] bool GameIsPaused = false;
@@ -36,6 +37,7 @@ public class PauseMenu : MonoBehaviour
         if (GameIsPaused)
         {
             pauseCanvas.enabled = true;
+            inventoryCanvas.enabled = false;
             Time.timeScale = 0f;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Confined;
@@ -43,6 +45,7 @@ public class PauseMenu : MonoBehaviour
         else if (!GameIsPaused)
         {
             pauseCanvas.enabled = false;
+            inventoryCanvas.enabled = true;
             Time.timeScale = 1f;
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;

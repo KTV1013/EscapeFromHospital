@@ -387,6 +387,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseCanvas: {fileID: 6427655293420398931}
+  winningCanvas: {fileID: 8386359448810507449, guid: 69dad9de97d59d34daefe1fbe2260e53, type: 3}
+  inventoryCanvas: {fileID: 0}
   GameIsPaused: 0
 --- !u!1 &2439293490834175380
 GameObject:

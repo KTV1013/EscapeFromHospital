@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PinCode : MonoBehaviour
 {
     public string pinCode = "1234";
-    [SerializeField] string newPinCode;
+    [SerializeField] string playerInput;
+    public TextMeshProUGUI pinCodetxt;
 
     Ray ray;
     Button button;
@@ -16,20 +18,24 @@ public class PinCode : MonoBehaviour
         {
             ShootRay();
         }
-
+        pinCodetxt.text = playerInput;
     }
 
     
-    private void ShootRay() // Skapat Raycast funktion för att testa om logiken funkar
+    private void ShootRay() 
     {
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hitInfo))
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, 10f))
         {
             if (hitInfo.collider.CompareTag("Button"))
             {
                button = hitInfo.collider.gameObject.GetComponent<Button>();
-               newPinCode = newPinCode + button.GetNum();
-
+               playerInput = playerInput + button.GetNum();
+                Debug.Log("player input: " + playerInput);
+            }
+            if(hitInfo.collider.CompareTag("Delete Button"))
+            {
+                playerInput = "";
             }
         }
     }
@@ -38,9 +44,9 @@ public class PinCode : MonoBehaviour
         return pinCode;
     }
 
-    public string GetNewPinCode()
+    public string GetPlayerInput()
     {
-        return newPinCode;
+        return playerInput;
     }
 
 }

@@ -1,12 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class RayCasting : MonoBehaviour
 {
     Ray ray;
-    Ray camRay;
     float maxDistance = 5f;
     EquippedItem equippedItem;
     public Animator TrashCanAnimation;
@@ -22,7 +20,7 @@ public class RayCasting : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetMouseButton(0))
         {
             ShootRay();
         }
@@ -38,7 +36,7 @@ public class RayCasting : MonoBehaviour
             //{
             //    hitInfo.collider.gameObject.transform.Rotate(new Vector3(36f, 0f, 0f));
             //}
-            RotateGear(hitInfo.collider.gameObject, hitInfo.collider.CompareTag("Gear"));
+            //RotateGear(hitInfo.collider.gameObject, hitInfo.collider.CompareTag("Gear"));
             OpenRoomDoor(hitInfo.collider.CompareTag("Door"), equippedItem.GetItem());
 
             PlayAnimation(hitInfo.collider.gameObject.CompareTag("Trash Can"), "isOpen", opend, TrashCanAnimation);
@@ -59,16 +57,16 @@ public class RayCasting : MonoBehaviour
         }
     }
     // Funktion för att rotarea Gear när man träffar den med en ray
-    private void RotateGear(GameObject gear, bool hitingGear)
-    {
-        if (hitingGear)
-        {
-            gear.transform.Rotate(new Vector3(-36f, 0f, 0f));
-            audioManager.PlaySFX(audioManager.GearSound);
-            Debug.Log("Roterad");
+    //private void RotateGear(GameObject gear, bool hitingGear)
+    //{
+    //    if (hitingGear)
+    //    {
+    //        gear.transform.Rotate(new Vector3(-36f, 0f, 0f));
+    //        audioManager.PlaySFX(audioManager.GearSound);
+    //        Debug.Log("Roterad");
 
-        }
-    }
+    //    }
+    //}
 
     // Fuktion som öppnar dörren när en ray träffar dörren och när spelaren håller i nycklen
     private void OpenRoomDoor(bool hitingDoor, string item)

@@ -150,6 +150,8 @@ public class InteractableObject : Interactable
     #region ClickAndDrag
     protected virtual void OnLeftClick(InputAction.CallbackContext callback)
     {
+        if (!playerInput.inputIsActive) return;
+
         Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(mouseRay, out RaycastHit hit))
         {
@@ -159,6 +161,7 @@ public class InteractableObject : Interactable
             }
         }
         else { interactedObject = null; }
+        
     }
     protected virtual void OnLeftHold(InputAction.CallbackContext callback)
     {

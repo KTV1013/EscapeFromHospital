@@ -15,6 +15,10 @@ TagManager:
   - Locker
   - Audio
   - Key2
+  - Paper
+  - Code Panel
+  - Delete Button
+  - Timer
   layers:
   - Default
   - TransparentFX

@@ -27,10 +27,11 @@ public class Timer : MonoBehaviour
         
         startTimer();
         HalvTimeCheck();
-        LastMinuteCheck(minutes, seconds);        
+        LastMinuteCheck(minutes, seconds);   
     }
 
-    public float GetTime() {  return timeLeft; }
+    public float GetTime() {  return time; }
+    public float GetTimeLeft() { return timeLeft; }
     public void startTimer()
     {
         if (timeLeft > 0)

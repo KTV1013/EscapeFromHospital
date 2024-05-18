@@ -11,6 +11,7 @@ public class RayCasting : MonoBehaviour
     public bool opend = false;
     public bool lockeropen = false;
     public Animator LockerAnimation;
+    public Animator XrayLocker; 
     AudioManager audioManager;
     
     private void Start()
@@ -41,6 +42,7 @@ public class RayCasting : MonoBehaviour
 
             PlayAnimation(hitInfo.collider.gameObject.CompareTag("Trash Can"), "isOpen", opend, TrashCanAnimation);
             PlayAnimation(hitInfo.collider.gameObject.CompareTag("Locker"), "IsClosed", lockeropen, LockerAnimation);
+            PlayAnimation(hitInfo.collider.gameObject.CompareTag("XrayLocker"), "IsClosed", lockeropen, XrayLocker);
         }
 
 
@@ -48,6 +50,7 @@ public class RayCasting : MonoBehaviour
 
     private void PlayAnimation(bool objBeingHit, string animationBool, bool objStatus, Animator animation)
     {
+       
         if(objBeingHit)
         {
             if (!objStatus)

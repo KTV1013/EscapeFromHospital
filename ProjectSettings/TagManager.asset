@@ -19,6 +19,7 @@ TagManager:
   - Code Panel
   - Delete Button
   - Timer
+  - XrayLocker
   layers:
   - Default
   - TransparentFX

@@ -14,7 +14,6 @@ public class AudioManager : MonoBehaviour
     public AudioClip KeysSound;
     public AudioClip Alarmsound;
     public AudioClip UnlockSoundForCode;
-    public AudioClip Lockedsound;
     public AudioClip GearSound;
     public AudioClip switchingsound;
     public AudioClip UnlockSoundForNumbers; 

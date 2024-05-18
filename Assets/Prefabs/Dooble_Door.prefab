@@ -73,8 +73,8 @@ HingeJoint:
   m_GameObject: {fileID: 326172580889871282}
   m_ConnectedBody: {fileID: 3469407072045417576}
   m_ConnectedArticulationBody: {fileID: 0}
-  m_Anchor: {x: -97.55, y: 0, z: 0}
-  m_Axis: {x: 0, y: 1.33, z: 0}
+  m_Anchor: {x: -98.88, y: 0, z: 0}
+  m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: 0, y: 0, z: 0}
   serializedVersion: 2
@@ -89,11 +89,11 @@ HingeJoint:
     force: 0
     freeSpin: 0
   m_UseLimits: 1
-  m_ExtendedLimits: 1
+  m_ExtendedLimits: 0
   m_UseAcceleration: 0
   m_Limits:
-    min: -319.3
-    max: -42.57748
+    min: -141.91
+    max: 143.01
     bounciness: 0
     bounceMinVelocity: 0.2
     contactDistance: 0
@@ -115,7 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac5d9c923b274bf42beaad0f7e5f9b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 40
+  enddelay: 5
+  localForce: {x: 0, y: 0, z: -40}
 --- !u!1 &993293361393345314
 GameObject:
   m_ObjectHideFlags: 0
@@ -583,7 +584,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 88.57, y: 182.3, z: 5}
+  m_Size: {x: 81.6, y: 175.9, z: 5}
   m_Center: {x: 38.75607, y: 94.961365, z: 0}
 --- !u!1 &8358847994215983033
 GameObject:
@@ -700,7 +701,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac5d9c923b274bf42beaad0f7e5f9b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 40
+  enddelay: 5
+  localForce: {x: 0, y: 0, z: -40}
 --- !u!1 &8484194779403523444
 GameObject:
   m_ObjectHideFlags: 0
@@ -961,5 +963,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 92.21404, y: 189.12836, z: 5}
-  m_Center: {x: 38.756084, y: 94.961365, z: 0}
+  m_Size: {x: 89.2, y: 177.5, z: 4.9999995}
+  m_Center: {x: 38.756084, y: 95.65891, z: 0}

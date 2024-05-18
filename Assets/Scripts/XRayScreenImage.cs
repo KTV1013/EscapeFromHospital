@@ -33,6 +33,7 @@ public class XRayScreenImage : MonoBehaviour
         {
             render.material = handWithKey;
             item.GetComponent<Item>().icon = handWithKeyIcon;
+            item.GetComponent<Item>().name = "Hand With Key";
         }
         else
         {

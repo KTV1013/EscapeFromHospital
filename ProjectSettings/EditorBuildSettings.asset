@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 462727a42613deb4cb519447e162dbd4
   - enabled: 1
-    path: Assets/Scenes/SprintReview3.unity
-    guid: 1c261759ffdb9d8488de6af8e0b49b64
+    path: Assets/Scenes/Game.unity
+    guid: d07a542199f74cf4aa27fea318e99091
   m_configObjects: {}

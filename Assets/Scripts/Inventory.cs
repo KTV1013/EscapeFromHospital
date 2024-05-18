@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class Inventory : MonoBehaviour
 {
@@ -37,7 +38,7 @@ public class Inventory : MonoBehaviour
     private void itemRaycast(bool hasClicked = false)
     {
         itemName.text = "";
-        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        Ray ray = Camera.main.ViewportPointToRay(Input.mousePosition);
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, raycastDistance, itemLayer))

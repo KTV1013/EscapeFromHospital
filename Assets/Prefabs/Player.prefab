@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 4429937130916664550, guid: 30fa84c9789b52b4e90d1b1606ac94e8, type: 3}
+  hasItem: 0
   slotItem: {fileID: 0}
 --- !u!114 &9166476361272642435
 MonoBehaviour:
@@ -494,8 +495,8 @@ AudioSource:
   m_GameObject: {fileID: 1806804079536349037}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 7838396451418859969, guid: 059fa65116b2b99448fc09d2227aec85, type: 2}
+  m_audioClip: {fileID: 8300000, guid: ccb4b6cbf9645c24d96ea7e3c01f3b57, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1989,7 +1990,7 @@ AudioSource:
   m_GameObject: {fileID: 9163902931686520731}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 455525416551231387, guid: 059fa65116b2b99448fc09d2227aec85, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1

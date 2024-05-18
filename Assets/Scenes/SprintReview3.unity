@@ -1169,10 +1169,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 2188691961126175569, guid: 8d3ee7fe25aa1e84eb06b36cf70fa5b1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048548784040427400, guid: 8d3ee7fe25aa1e84eb06b36cf70fa5b1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048548784040427400, guid: 8d3ee7fe25aa1e84eb06b36cf70fa5b1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6604400749572103825, guid: 8d3ee7fe25aa1e84eb06b36cf70fa5b1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6604400749572103825, guid: 8d3ee7fe25aa1e84eb06b36cf70fa5b1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6604400749572103825, guid: 8d3ee7fe25aa1e84eb06b36cf70fa5b1, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8552184318228733158, guid: 8d3ee7fe25aa1e84eb06b36cf70fa5b1, type: 3}
       propertyPath: winningCanvas
       value: 
       objectReference: {fileID: 1053445933}
+    - target: {fileID: 8552184318228733158, guid: 8d3ee7fe25aa1e84eb06b36cf70fa5b1, type: 3}
+      propertyPath: inventoryCanvas
+      value: 
+      objectReference: {fileID: 2047315004}
     - target: {fileID: 8867979847168798928, guid: 8d3ee7fe25aa1e84eb06b36cf70fa5b1, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1923,6 +1951,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27fd78e2190b7e44f87c6537751c584f, type: 3}
+--- !u!223 &2047315004 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 6375769468512871019, guid: 27fd78e2190b7e44f87c6537751c584f, type: 3}
+  m_PrefabInstance: {fileID: 2030409381}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

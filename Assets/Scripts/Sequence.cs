@@ -81,7 +81,7 @@ public class Sequence : MonoBehaviour
     {
         if (parent != null)
             parent.CompleteStep(this);
-        else End();
+        End();
     }
 
     void ResetProgress()
@@ -96,7 +96,7 @@ public class Sequence : MonoBehaviour
 
     protected virtual void End() 
     {
-        ProgressTracker.instance.CompleteStep(progressStepId);
+        //ProgressTracker.instance.CompleteStep(progressStepId);
         onCompletion.Invoke();
         enabled = false;
     }

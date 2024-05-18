@@ -7,6 +7,7 @@ public class UnlockableObject : Interactable
 {
     EquippedItem equippedGetter;
     public Item key;
+    public string keyNameOverride;
     public bool removeItem = true;
     public UnityEvent unlock;
 
@@ -21,13 +22,16 @@ public class UnlockableObject : Interactable
 
     public override void StartInteraction()
     {
-        if (key == null)
+        bool overrideName = !keyNameOverride.Equals(string.Empty);
+        if (key == null && !overrideName)
         {
             Debug.LogError("Missing Key: " + name);
             return;
         }
-        Debug.Log(equippedGetter.GetItem());
-        if (equippedGetter.GetItem().Equals(key.name)) 
+        string keyName = key.name;
+        if (overrideName)
+            keyName = keyNameOverride;
+        if (equippedGetter.GetItem().Equals(keyName)) 
         {
 
             unlock.Invoke();

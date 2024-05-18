@@ -46,6 +46,8 @@ public class Inventory : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, raycastDistance, itemLayer))
         {
+            if (Physics.Raycast(ray, out RaycastHit hit2, raycastDistance))
+                if (hit.colliderInstanceID != hit2.colliderInstanceID) return;
             if (hit.collider != null)
             {
                 if (hasClicked)

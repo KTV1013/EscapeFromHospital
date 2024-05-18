@@ -81,7 +81,7 @@ public class Sequence : MonoBehaviour
     {
         if (parent != null)
             parent.CompleteStep(this);
-        else End();
+        End();
     }
 
     void ResetProgress()

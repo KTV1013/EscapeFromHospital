@@ -38,7 +38,10 @@ public class Inventory : MonoBehaviour
     private void itemRaycast(bool hasClicked = false)
     {
         itemName.text = "";
-        Ray ray = Camera.main.ViewportPointToRay(Input.mousePosition);
+        Vector3 screenPosition = new(0.5f, 0.5f, 0);
+        if (Cursor.lockState.Equals(CursorLockMode.Confined))
+            screenPosition = Input.mousePosition;
+        Ray ray = Camera.main.ViewportPointToRay(screenPosition);
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, raycastDistance, itemLayer))

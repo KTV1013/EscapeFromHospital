@@ -39,7 +39,7 @@ public class Inventory : MonoBehaviour
     {
         itemName.text = "";
         Vector3 screenPosition = new(0.5f, 0.5f, 0);
-        if (Cursor.lockState.Equals(CursorLockMode.Confined))
+        if (Cursor.visible)
             screenPosition = Input.mousePosition;
         Ray ray = Camera.main.ViewportPointToRay(screenPosition);
         RaycastHit hit;

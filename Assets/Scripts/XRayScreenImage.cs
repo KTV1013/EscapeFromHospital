@@ -9,7 +9,6 @@ public class XRayScreenImage : MonoBehaviour
     public Material hand;
     public Material handWithKey;
     public Renderer render;
-    public Sprite handWithKeyIcon;
 
     void Start()
     {
@@ -32,8 +31,6 @@ public class XRayScreenImage : MonoBehaviour
         if (item.GetComponent<HasKey>())
         {
             render.material = handWithKey;
-            item.GetComponent<Item>().icon = handWithKeyIcon;
-            item.GetComponent<Item>().name = "Hand With Key";
         }
         else
         {

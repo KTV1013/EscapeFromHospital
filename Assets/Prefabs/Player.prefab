@@ -870,6 +870,7 @@ MonoBehaviour:
   opend: 0
   lockeropen: 0
   LockerAnimation: {fileID: 0}
+  XrayLocker: {fileID: 0}
 --- !u!114 &4740941419111547503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1071,7 +1072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.39215687}
+  m_Color: {r: 0.5773585, g: 0.5773585, b: 0.5773585, a: 0.39215687}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1651,7 +1652,6 @@ MonoBehaviour:
   KeysSound: {fileID: 8300000, guid: 92ec94e6802bc84468e48ecb80670acc, type: 3}
   Alarmsound: {fileID: 8300000, guid: 873dcfd2b710eea4faeb6d70c4b15209, type: 3}
   UnlockSoundForCode: {fileID: 0}
-  Lockedsound: {fileID: 0}
   GearSound: {fileID: 8300000, guid: d9d2792a4c2b6504387e382e9f877576, type: 3}
   switchingsound: {fileID: 8300000, guid: 5ff97975c3ca0ab49a07124f232c72ad, type: 3}
   UnlockSoundForNumbers: {fileID: 8300000, guid: edfaf7600356e834995cdab20483aec8, type: 3}

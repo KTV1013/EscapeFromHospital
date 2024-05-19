@@ -52,8 +52,8 @@ public class SetItemTrigger : MonoBehaviour
                 if (equipmentItem.slotItem.name == "Hand" || equipmentItem.slotItem.name == "Hand With Key")
                 {
                     screen.SetImage(equipmentItem.slotItem.gameObject);
-                    Debug.Log(equipmentItem.slotItem.name);
                     GameObject item = Instantiate(equipmentItem.slotItem.gameObject, itemPlace.transform);
+                    item.gameObject.layer = 0;
                     item.GetComponent<CapsuleCollider>().enabled = true;
                     item.transform.localPosition = new Vector3(0, 0, 0);
 

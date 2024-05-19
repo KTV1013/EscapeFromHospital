@@ -75,7 +75,10 @@ public class Inventory : MonoBehaviour
                 else
                 {
                     Item newItem = hit.collider.GetComponent<Item>();
-                    itemName.text = newItem.name;
+                    if (itemName != null)
+                    {
+                        itemName.text = newItem.name;
+                    }
                 }
             }
 

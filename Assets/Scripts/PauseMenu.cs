@@ -8,14 +8,15 @@ public class PauseMenu : MonoBehaviour
     public Canvas pauseCanvas;
     public Canvas winningCanvas;
     public Canvas inventoryCanvas;
+   
     public float timeLeft { get; set; }
-
     [SerializeField] bool GameIsPaused = false;
     
 
     private void Awake()
     {
         pauseCanvas.enabled = false;
+        
     }
 
     private void Update()
@@ -58,6 +59,16 @@ public class PauseMenu : MonoBehaviour
         Application.Quit();
     }
 
+    public void Continue()
+    {
+        Time.timeScale = 1f;
+        pauseCanvas.enabled = false;
+        inventoryCanvas.enabled = true;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+ 
     public void OpenScene(int sceneIndex)
     {
         Time.timeScale = 1f;
@@ -65,4 +76,6 @@ public class PauseMenu : MonoBehaviour
         Cursor.visible = false;
         SceneManager.LoadScene(sceneIndex);
     }
+
+    
 }

@@ -37,48 +37,37 @@ public class InteractableObject : Interactable
         
         InputAction moveAction = playerInput.actions.FindAction("Move");
 
-        moveAction.performed +=
-            context =>
-            {
-                OnMove(context);
-            };
-
-        moveAction.canceled +=
-            context =>
-            {
-                OnMove(context);
-            };
+        moveAction.performed += OnMove;
+        moveAction.canceled += OnMove;
 
         InputAction leftClickAction = playerInput.actions.FindAction("LeftClick");
 
-        leftClickAction.started +=
-            context =>
-            {
-                OnLeftClick(context);
-            };
-
-        leftClickAction.performed +=
-            context =>
-            {
-                if (context.interaction is HoldInteraction)
-                    OnLeftHold(context);
-            };
-
-        leftClickAction.canceled +=
-            context =>
-            {
-                if (context.interaction is HoldInteraction)
-                    OnLeftCancel(context);
-            };
+        leftClickAction.started += OnLeftClick;
+        leftClickAction.performed += OnLeftHold;
+        leftClickAction.canceled += OnLeftCancel;
 
         InputAction rightClickAction = playerInput.actions.FindAction("RightClick");
 
-        rightClickAction.started +=
-            context =>
-            {
-                OnRightClick(context);
-            };
+        rightClickAction.started += OnRightClick;
+    }
+    protected virtual void OnDestroy()
+    {
+        playerInput = GetComponent<PlayerInput>();
 
+        InputAction moveAction = playerInput.actions.FindAction("Move");
+
+        moveAction.performed -= OnMove;
+        moveAction.canceled -= OnMove;
+
+        InputAction leftClickAction = playerInput.actions.FindAction("LeftClick");
+
+        leftClickAction.started -= OnLeftClick;
+        leftClickAction.performed -= OnLeftHold;
+        leftClickAction.canceled -= OnLeftCancel;
+
+        InputAction rightClickAction = playerInput.actions.FindAction("RightClick");
+
+        rightClickAction.started -= OnRightClick;
     }
     #endregion Input Callbacks
     #region CameraMovement
@@ -165,19 +154,22 @@ public class InteractableObject : Interactable
     }
     protected virtual void OnLeftHold(InputAction.CallbackContext callback)
     {
-        Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(mouseRay, out RaycastHit hit))
+        if (callback.interaction is HoldInteraction)
         {
-            int objectId = hit.transform.gameObject.GetInstanceID();
-            if (interactedObject?.GetInstanceID() == objectId)
+            Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(mouseRay, out RaycastHit hit))
             {
-                Debug.Log("Holding " + interactedObject.name);
-
+                int objectId = hit.transform.gameObject.GetInstanceID();
+                if (interactedObject?.GetInstanceID() == objectId)
+                {
+                    Debug.Log("Holding " + interactedObject.name);
+                }
             }
         }
     }
     protected virtual void OnLeftCancel(InputAction.CallbackContext callback)
     {
+        //if (callback.interaction is HoldInteraction)    
         interactedObject?.EndInteraction();
         interactedObject = null;
     }

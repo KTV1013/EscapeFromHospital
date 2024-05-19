@@ -27,25 +27,22 @@ public class Interactor : MonoBehaviour
 
         InputAction leftClickAction = playerInput.actions.FindAction("LeftClick");
 
-        leftClickAction.started +=
-            context =>
-            {
-                OnLeftClick(context);
-            };
+        leftClickAction.started += OnLeftClick;
+        leftClickAction.performed += OnLeftHold;
+        leftClickAction.canceled += OnLeftCancel;
 
-        leftClickAction.performed +=
-            context =>
-            {
-                if (context.interaction is HoldInteraction)
-                    OnLeftHold(context);
-            };
+        InputAction rightClickAction = playerInput.actions.FindAction("RightClick");
+    }
 
-        leftClickAction.canceled +=
-            context =>
-            {
-                if (context.interaction is HoldInteraction)
-                    OnLeftCancel(context);
-            };
+    private void OnDestroy()
+    {
+        playerInput = GetComponent<PlayerInput>();
+
+        InputAction leftClickAction = playerInput.actions.FindAction("LeftClick");
+
+        leftClickAction.started -= OnLeftClick;
+        leftClickAction.performed -= OnLeftHold;
+        leftClickAction.canceled -= OnLeftCancel;
 
         InputAction rightClickAction = playerInput.actions.FindAction("RightClick");
     }
@@ -59,7 +56,7 @@ public class Interactor : MonoBehaviour
 
     private void OnLeftHold(InputAction.CallbackContext context)
     {
-        
+        //if (context.interaction is HoldInteraction)
     }
 
     private void OnLeftClick(InputAction.CallbackContext context)

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
@@ -41,6 +42,7 @@ public class Timer : MonoBehaviour
         else if (timeLeft < 0)
         {
             timeLeft = 0;
+            SceneManager.LoadScene(2);
         }
 
         timerText.text = string.Format("{0:00}:{1:00}",minutes,seconds);

@@ -1,26 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameOverMenu : MonoBehaviour
 {
-    public Canvas GameOverCanvas;
-
-    Timer time;
-    private void Awake()
+    private void Start()
     {
-        time = GetComponent<Timer>();
-     
-        GameOverCanvas.enabled = false;
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
     }
-
-    void Update()
+    public void OpenScene(int sceneNr)
     {
-        if (time.GetTime() <0 ) { GameOver(); }
+        SceneManager.LoadScene(sceneNr);
     }
-
-    private void GameOver()
+    public void Quit()
     {
-        GameOverCanvas.enabled = true;
+        Application.Quit();
     }
 }

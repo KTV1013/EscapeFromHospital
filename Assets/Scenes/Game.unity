@@ -4291,10 +4291,6 @@ PrefabInstance:
       propertyPath: keyNameOverride
       value: Hand With Key
       objectReference: {fileID: 0}
-    - target: {fileID: 2487818310354339954, guid: e2405105dd2a4ee479f1a5bf9f606762, type: 3}
-      propertyPath: m_Constraints
-      value: 126
-      objectReference: {fileID: 0}
     - target: {fileID: 5136145757071875673, guid: e2405105dd2a4ee479f1a5bf9f606762, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.933206
@@ -4358,10 +4354,6 @@ PrefabInstance:
     - target: {fileID: 6452220002775184561, guid: e2405105dd2a4ee479f1a5bf9f606762, type: 3}
       propertyPath: time
       value: 600
-      objectReference: {fileID: 0}
-    - target: {fileID: 6585936939851618144, guid: e2405105dd2a4ee479f1a5bf9f606762, type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7053742943525941000, guid: e2405105dd2a4ee479f1a5bf9f606762, type: 3}
       propertyPath: m_IsActive

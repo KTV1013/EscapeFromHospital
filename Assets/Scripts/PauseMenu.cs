@@ -16,7 +16,7 @@ public class PauseMenu : MonoBehaviour
     private void Awake()
     {
         pauseCanvas.enabled = false;
-        Continue();
+        
     }
 
     private void Update()
